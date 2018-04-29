@@ -1,0 +1,102 @@
+a:link {
+    color: #000000;
+}
+
+/* visited link */
+a:visited {
+    color: blue;
+}
+
+/* mouse over link */
+a:hover {
+    color:  #FFFFFF;
+}
+
+/* selected link */
+a:active {
+    color:  #000000;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 2px solid black;
+}
+
+thead, tbody, tr, td, th { box-sizing: border-box;display: block;  overflow: hidden;}
+
+tr:after {
+    content: ' ';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+thead th { 
+    height: 30px;
+    line-height: 30px;
+    /*text-align: left;*/
+}
+
+/*any os other than mac*/
+tbody {
+  height: 300px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+/*any os other than mac*/
+thead {
+  width: 100%;
+  padding-right: 17px;
+  color:#D5DDE5;
+  background:#1b1e24;
+  border-bottom:4px solid #9ea7af;
+  border-right: 1px solid #343a45;
+  font-weight: 100;
+  font-size:15px;
+  padding:5px;
+  text-align:left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align:middle;
+}
+/*if mac os*/
+body.MacOS thead {
+  padding-right: 0;
+}
+
+tbody { border-top: 2px solid black; }
+
+tbody td, thead th {
+    width: 33%;
+    float: left;
+}
+
+
+.table--class td{
+   background:#FFFFFF;
+  padding-right:15px;
+  vertical-align:middle;
+  font-weight:300;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+  width: 40px;
+}
+
+tbody tr:hover {
+  background:#4E5066;
+  color:#FFFFFF;
+  border-top: 1px solid #22262e;
+}
+
+.table--class tr:first-child th{
+    
+    border:0px solid #4c7299;
+    text-align:center;
+    border-width:0px 0px 1px 1px;
+    font-size:18px;
+    font-family:Arial Black;
+    font-weight:bold;
+    color:#1d53e5;
+}

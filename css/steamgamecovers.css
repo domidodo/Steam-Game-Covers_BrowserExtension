@@ -1,0 +1,67 @@
+
+body.v6 .game_area_cover_section h2 {
+	text-transform: uppercase;
+	color: #fff;
+	margin: 0 0 10px;
+	font-size: 17px;
+	letter-spacing: 2px;
+	font-family: "Motiva Sans", Sans-serif;
+	font-weight: normal;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+body.v6 .game_area_cover_section a h4 {
+    font-size: 13px;
+    font-family: "Motiva Sans", Sans-serif;
+    font-weight: normal;
+    font-weight: normal;
+    color: #8f98a0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-bottom: 0px;
+}
+
+body.v6 .game_area_cover_section a h5 {
+    font-size: 11px;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-weight: normal;
+    color: #acdbf5;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-bottom: 0px;
+}
+
+.game_area_cover_section {
+	margin-bottom: 11px;
+    margin-top: 60px;
+}
+
+.game_area_cover_section .store_horizontal_autoslider_ctn a{
+	background-color: rgba( 0, 0, 0, 0.2 );
+	float: left;
+	padding: 15px;
+	height: 165px;
+	margin-right: 2px;
+	margin-bottom: 10px;
+	border: 1px solid rgba( 0, 0, 0, 0 );
+}
+
+.game_area_cover_section .store_horizontal_autoslider_ctn a:hover {
+
+    text-decoration: none;
+    border: 1px solid rgba( 103, 193, 245, 0.5 );
+
+}
+
+.game_area_cover_section a .coverimage{
+	height: 100px;
+}
+
+#steamgamecover_block_content img{
+	display:block;
+	padding-bottom:5px;
+}
