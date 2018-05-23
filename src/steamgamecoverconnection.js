@@ -272,7 +272,11 @@ function addBlebundlItems(item, SubId)
 			
 			if(obj.success)
 			{
-				item.blebundlItems = obj.data.apps;
+				item.blebundlItems = new Array();
+				for(var i = 0; i < obj.data.apps.length; i++)
+				{
+					item.blebundlItems.push(obj.data.apps[i].id);
+				}
 			}
 		}
 	}

@@ -41,7 +41,7 @@ function start()
 				{
 					for(var j = 0; j < Items.length; j++)
 					{
-						column2.innerHTML += "<a href='https://store.steampowered.com/app/"+Items[j].id+"' alt='"+Items[j].id+"'>"+Items[j].id+"</a> ";
+						column2.innerHTML += "<a href='https://store.steampowered.com/app/"+Items[j]+"' alt='"+Items[j]+"'>"+Items[j]+"</a> ";
 					}
 				}
 				else
