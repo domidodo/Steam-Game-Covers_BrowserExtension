@@ -8,6 +8,8 @@ function start()
 		
 		var GameStorage = result.game;
 		
+		GameStorage.sort(function(a,b) {return (a.name.toUpperCase() > b.name.toUpperCase()) ? 1 : ((b.name.toUpperCase() > a.name.toUpperCase()) ? -1 : 0);} );
+		
 		var gameTable = document.getElementById("GamesTable").childNodes[3];
 		var gameTableCount = 0;
 		var packageTable = document.getElementById("PackageTable").childNodes[3];
