@@ -297,121 +297,142 @@ function getCoverArray(callback, firstTry)
 		}
 	
 		var steamId = getGameIdFromUrl(window.location.href);
-		var gameStorageItemIndex = gameStorage.findIndex(x => x.steamId === steamId);
-		if(gameStorageItemIndex < 0)
+		
+		var gameStorageItemIndexArray = new Array();
+		var isMainGameFind = false;
+		for(var i = 0; i < gameStorage.length; i++)
 		{
-			if(firstTry)
+			if(gameStorage[i].steamId == steamId && gameStorage[i].steamType == "app")
 			{
-				updateGameData(function(){getCoverArray(callback, false)});
-				return 0;
+				gameStorageItemIndexArray.push(i);
+				isMainGameFind = true;
 			}
-			else
+			
+			if(gameStorage[i].steamType == "sub" && gameStorage[i].blebundlItems != null)
 			{
-				if(callback != null)
-					callback(dataArray);
-				return 0;
-			}
-		}
-
-		var gameStorageItem = gameStorage[gameStorageItemIndex];
-	
-		var request = new XMLHttpRequest();
-		request.open("GET", "http://www.steamgamecovers.com/"+gameStorageItem.path, false);
-		request.send();
-		if (request.readyState === 4) {  
-			if (request.status === 200) {  
-				var htmlDoc = request.responseText;
-				
-				var tmp = "";
-				while(htmlDoc.indexOf('<table') >= 0)
+				for(var j = 0; j < gameStorage[i].blebundlItems.length; j++)
 				{
-					htmlDoc = htmlDoc.substring(htmlDoc.indexOf('<table')+6);
-					tmp += htmlDoc.substring(0, htmlDoc.indexOf('</table>')); 
-					
-				}
-				htmlDoc = tmp;
-				
-				//htmlDoc = htmlDoc.substring(htmlDoc.indexOf('<table'));
-				//var tmpTbl1 = htmlDoc.substring(0, htmlDoc.indexOf('</table>')); 
-				//htmlDoc = htmlDoc.substring(htmlDoc.indexOf('</table>')+8);
-				//htmlDoc = htmlDoc.substring(htmlDoc.indexOf('<table')+6);
-				//htmlDoc = tmpTbl1 + htmlDoc.substring(0, htmlDoc.indexOf('</table>')+8);
-				htmlDoc = htmlDoc.replace(/(<td>&nbsp;<\/td>)/g, '');
-				
-				var items = htmlDoc.split('<td');
-				var progress = 1;
-				for(var i = 0; i < items.length; i++)
-				{
-					var itemString = items[i];
-					
-					var startUrlIndex = itemString.indexOf('href=');
-					if(startUrlIndex >= 0)
+					if(gameStorage[i].blebundlItems[j] == steamId)
 					{
-						var item = {
-							'url': null,
-							'image': null,
-							'downloads': null,
-							'ranking': null,
-							'artist' : null
-						};
-						
-						itemString = itemString.substring(startUrlIndex+6);
-						var endUrlIndex = itemString.indexOf('>');
-						
-						item.url = "http://www.steamgamecovers.com"+itemString.substring(0, endUrlIndex-1);
-						
-						itemString = itemString.substring(endUrlIndex);
-						
-						var startImageIndex = itemString.indexOf('thumbs/');
-						if(startImageIndex >= 0)
-						{
-							itemString = itemString.substring(startImageIndex+7);
-							var endImageIndex = itemString.indexOf('"');
-							
-							item.image = "http://images.steamgamecovers.com/large/"+itemString.substring(0, endImageIndex);
-							
-							itemString = itemString.substring(endImageIndex);
-							
-							// Ranking
-							
-							var endRankingIndex = itemString.indexOf("star.jpg");
-							if(endRankingIndex >= 0)
-							{
-								itemString = itemString.substring(endRankingIndex-3);
-								var startRankingIndex = itemString.indexOf("/");
-								
-								if(startRankingIndex >= 0)
-								{
-									itemString = itemString.substring(startRankingIndex+1);
-									endRankingIndex = itemString.indexOf("star.jpg");
-									item.ranking = itemString.substring(0, endRankingIndex+4)
-									
-									var startArtistIndex = itemString.indexOf("Created");
-									if(startArtistIndex >= 0)
-									{
-										itemString = itemString.substring(startArtistIndex);
-										startArtistIndex = itemString.indexOf(">");
-										
-										if(startArtistIndex >= 0)
-										{
-											itemString = itemString.substring(startArtistIndex+1);
-										
-											var endArtistIndex = itemString.indexOf("<");
-											if(endArtistIndex >= 0)
-											{
-												item.artist = itemString.substring(0, endArtistIndex);
-												dataArray.push(item);
-											}
-										}
-									}
-								}
-							}
-						}	
+						gameStorageItemIndexArray.push(i);
 					}
 				}
 			}
 		}
 		
+		var gameStorageItemIndex = gameStorage.findIndex(x => x.steamId === steamId);
+		if(!isMainGameFind && firstTry)
+		{
+			updateGameData(function(){getCoverArray(callback, false)});
+				return 0;
+		}
+		
+		if(gameStorageItemIndexArray.length <= 0)
+		{
+			if(callback != null)
+				callback(dataArray);
+			return 0;
+		}
+		
+		for(var x = 0; x < gameStorageItemIndexArray.length; x++)
+		{
+			var request = new XMLHttpRequest();
+			request.open("GET", "http://www.steamgamecovers.com/"+gameStorage[gameStorageItemIndexArray[x]].path, false);
+			request.send();
+			if (request.readyState === 4) {  
+				if (request.status === 200) {  
+					var htmlDoc = request.responseText;
+					
+					var tmp = "";
+					while(htmlDoc.indexOf('<table') >= 0)
+					{
+						htmlDoc = htmlDoc.substring(htmlDoc.indexOf('<table')+6);
+						tmp += htmlDoc.substring(0, htmlDoc.indexOf('</table>')); 
+						
+					}
+					htmlDoc = tmp;
+					
+					//htmlDoc = htmlDoc.substring(htmlDoc.indexOf('<table'));
+					//var tmpTbl1 = htmlDoc.substring(0, htmlDoc.indexOf('</table>')); 
+					//htmlDoc = htmlDoc.substring(htmlDoc.indexOf('</table>')+8);
+					//htmlDoc = htmlDoc.substring(htmlDoc.indexOf('<table')+6);
+					//htmlDoc = tmpTbl1 + htmlDoc.substring(0, htmlDoc.indexOf('</table>')+8);
+					htmlDoc = htmlDoc.replace(/(<td>&nbsp;<\/td>)/g, '');
+					
+					var items = htmlDoc.split('<td');
+					var progress = 1;
+					for(var i = 0; i < items.length; i++)
+					{
+						var itemString = items[i];
+						
+						var startUrlIndex = itemString.indexOf('href=');
+						if(startUrlIndex >= 0)
+						{
+							var item = {
+								'url': null,
+								'image': null,
+								'downloads': null,
+								'ranking': null,
+								'artist' : null
+							};
+							
+							itemString = itemString.substring(startUrlIndex+6);
+							var endUrlIndex = itemString.indexOf('>');
+							
+							item.url = "http://www.steamgamecovers.com"+itemString.substring(0, endUrlIndex-1);
+							
+							itemString = itemString.substring(endUrlIndex);
+							
+							var startImageIndex = itemString.indexOf('thumbs/');
+							if(startImageIndex >= 0)
+							{
+								itemString = itemString.substring(startImageIndex+7);
+								var endImageIndex = itemString.indexOf('"');
+								
+								item.image = "http://images.steamgamecovers.com/large/"+itemString.substring(0, endImageIndex);
+								
+								itemString = itemString.substring(endImageIndex);
+								
+								// Ranking
+								
+								var endRankingIndex = itemString.indexOf("star.jpg");
+								if(endRankingIndex >= 0)
+								{
+									itemString = itemString.substring(endRankingIndex-3);
+									var startRankingIndex = itemString.indexOf("/");
+									
+									if(startRankingIndex >= 0)
+									{
+										itemString = itemString.substring(startRankingIndex+1);
+										endRankingIndex = itemString.indexOf("star.jpg");
+										item.ranking = itemString.substring(0, endRankingIndex+4)
+										
+										var startArtistIndex = itemString.indexOf("Created");
+										if(startArtistIndex >= 0)
+										{
+											itemString = itemString.substring(startArtistIndex);
+											startArtistIndex = itemString.indexOf(">");
+											
+											if(startArtistIndex >= 0)
+											{
+												itemString = itemString.substring(startArtistIndex+1);
+											
+												var endArtistIndex = itemString.indexOf("<");
+												if(endArtistIndex >= 0)
+												{
+													item.artist = itemString.substring(0, endArtistIndex);
+													dataArray.push(item);
+												}
+											}
+										}
+									}
+								}
+							}	
+						}
+					}
+				}
+			}
+		}
 		if(callback != null)
 			callback(dataArray);
 	});
