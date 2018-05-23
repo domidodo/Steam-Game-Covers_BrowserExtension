@@ -36,7 +36,7 @@ tr:after {
 thead th { 
     height: 30px;
     line-height: 30px;
-    /*text-align: left;*/
+    text-align: left;
 }
 
 /*any os other than mac*/
@@ -68,11 +68,15 @@ body.MacOS thead {
 
 tbody { border-top: 2px solid black; }
 
-tbody td, thead th {
+#GamesTable tbody td, #GamesTable thead th {
     width: 33%;
     float: left;
 }
 
+#PackageTable tbody td, #PackageTable thead th {
+    width: 25%;
+    float: left;
+}
 
 .table--class td{
    background:#FFFFFF;

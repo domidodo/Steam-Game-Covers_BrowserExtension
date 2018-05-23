@@ -61,6 +61,7 @@ function updateGameData(doneCallback)
 							var item = {
 								"steamType" : null,
 								"steamId" : null,
+								"blebundlItems" : null,
 								"name" : null,
 								"path" : null,
 								"count" : null
@@ -238,6 +239,11 @@ function addSteamIdToGameStorageItem(item, callback)
 				}
 				
 				item.steamId = htmlDoc.substring(0, endIndex);
+				
+				if(item.steamType == "sub")
+				{
+					addBlebundlItems(item);
+				}
 			}
 			
 		}else { 
@@ -254,6 +260,24 @@ function addSteamIdToGameStorageItem(item, callback)
 	request.send(null);
 }
 
+function addBlebundlItems(item, SubId)
+{
+	var request = new XMLHttpRequest();
+	request.open("GET", "https://store.steampowered.com/api/packagedetails?packageids="+item.steamId, false);
+	request.send();
+	if (request.readyState === 4) {  
+		if (request.status === 200) {  
+			var obj = JSON.parse(request.responseText);
+			obj = obj[Object.keys(obj)[0]]; // Springe in das erste Attribut
+			
+			if(obj.success)
+			{
+				item.blebundlItems = obj.data.apps;
+			}
+		}
+	}
+	
+}
 
 function getCoverArray(callback, firstTry)
 {

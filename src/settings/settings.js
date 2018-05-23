@@ -27,17 +27,38 @@ function start()
 			var column1 = document.createElement('td');
 			var column2 = document.createElement('td');
 			var column3 = document.createElement('td');
+			var column4 = document.createElement('td');
 			
 			if(GameStorage[i].steamId != "" && GameStorage[i].steamId != null)
 			{
 				column1.innerHTML = "<a href='https://store.steampowered.com/"+GameStorage[i].steamType+"/"+GameStorage[i].steamId+"' alt='"+GameStorage[i].steamId+"'>"+GameStorage[i].steamId+"</a>";
 			}
-			column2.innerHTML = GameStorage[i].name;
-			column3.innerHTML = "<a href='http://steamgamecovers.com/"+GameStorage[i].path+"' alt='"+GameStorage[i].path+"'>"+GameStorage[i].path+"</a>";
+			column2.innerHTML = "";
+			if(GameStorage[i].steamType == "sub")
+			{
+				var Items = GameStorage[i].blebundlItems;
+				if(Items != null)
+				{
+					for(var j = 0; j < Items.length; j++)
+					{
+						column2.innerHTML += "<a href='https://store.steampowered.com/app/"+Items[j].id+"' alt='"+Items[j].id+"'>"+Items[j].id+"</a> ";
+					}
+				}
+				else
+				{
+					row.style.color = "red";
+				}
+			}
+			column3.innerHTML = GameStorage[i].name;
+			column4.innerHTML = "<a href='http://steamgamecovers.com/"+GameStorage[i].path+"' alt='"+GameStorage[i].path+"'>"+GameStorage[i].path+"</a>";
 			
 			row.appendChild(column1);
-			row.appendChild(column2);
+			if(GameStorage[i].steamType != "app")
+			{
+				row.appendChild(column2);
+			}
 			row.appendChild(column3);
+			row.appendChild(column4);
 			
 			if(GameStorage[i].steamType == "app")
 			{
