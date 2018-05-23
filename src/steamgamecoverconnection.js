@@ -14,20 +14,18 @@ function makeHttpObject() {
 function updateGameData(doneCallback)
 {
 	//var GameStorage = window.localStorage.getItem("game");
-	
 	var stateBar = document.getElementById("MappingSteamGameCoverProgressBar");
 	if(stateBar == null)
 	{
 		stateBar = document.createElement('div');
 		stateBar.id = "MappingSteamGameCoverProgressBar";
-		stateBar.setAttribute("style", " position: absolute; left: 0px; top: 0px; z-index: 100; padding:5px; background-color: coral; color: black;"); 
-		stateBar.innerHTML = "loading...";
+		stateBar.setAttribute("style", " position: fixed; left: 0px; top: 0px; z-index: 999999; padding:5px; background-color: coral; color: black;"); 
+		stateBar.innerHTML = "Updating Steam-Game-Covers...";
 		stateBar.style.display = "none";
 		document.getElementById("game_area_purchase").appendChild(stateBar);
 	}
 
-	chrome.storage.local.get("game", function(result) {
-		
+	browser.storage.local.get("game", function(result) {
 		var gameStorage = result.game;
 		
 		if(gameStorage == null)
@@ -39,7 +37,8 @@ function updateGameData(doneCallback)
 		request.onreadystatechange = function () {
 			
 			if (request.readyState === 4) {
-				if (request.status === 200) {  
+				if (request.status === 200) { 
+				
 					var htmlDoc = request.responseText;
 					
 					htmlDoc = htmlDoc.substring(htmlDoc.indexOf('<div class="gameList" style="float:left;">'));
@@ -60,6 +59,7 @@ function updateGameData(doneCallback)
 						if(startUrlIndex > 5)
 						{
 							var item = {
+								"steamType" : null,
 								"steamId" : null,
 								"name" : null,
 								"path" : null,
@@ -90,7 +90,7 @@ function updateGameData(doneCallback)
 											
 											addSteamIdToGameStorageItem(item, function(newItem){
 												gameStorage.push(newItem);
-												chrome.storage.local.set({game: gameStorage}, null);
+												browser.storage.local.set({game: gameStorage}, null);
 												
 												updateStateBar(stateBar, progress++, items.length, doneCallback);
 											});
@@ -130,6 +130,10 @@ function updateGameData(doneCallback)
 					//alert("Error: (" + request.status +") "+request.statusText);			   
 				} 			
 			}
+			else
+			{
+				//alert("Error: request.readyState: "+request.readyState);
+			}
 			
 		};
 		
@@ -141,7 +145,7 @@ function updateGameData(doneCallback)
 function updateStateBar(stateBar, progress, max, doneCallback)
 {
 	stateBar.style.display = "block";
-	stateBar.innerHTML = "loading... ("+progress+ " / " +max+ ")";
+	stateBar.innerHTML = "Updating Steam-Game-Covers... ("+progress+ " / " +max+ ")";
 	if(progress >= max)
 	{
 		document.getElementById("game_area_purchase").removeChild(stateBar);
@@ -164,6 +168,7 @@ function addSteamIdToGameStorageItem(item, callback)
 			if(startIndex >= 0)
 			{
 				startIndex = startIndex + 21;
+				item.steamType = "app";
 			}
 			else
 			{
@@ -171,8 +176,48 @@ function addSteamIdToGameStorageItem(item, callback)
 				if(startIndex >= 0)
 				{
 					startIndex = startIndex + 23;
+					item.steamType = "app";
 				}
 			}
+			
+			if(startIndex < 0)
+			{
+				startIndex = htmlDoc.indexOf('steampowered.com/sub/');
+				if(startIndex >= 0)
+				{
+					startIndex = startIndex + 21;
+					item.steamType = "sub";
+				}
+				else
+				{
+					startIndex = htmlDoc.indexOf('steamcommunity.com/sub/');
+					if(startIndex >= 0)
+					{
+						startIndex = startIndex + 23;
+						item.steamType = "sub";
+					}
+				}
+			}
+			
+			if(startIndex < 0)
+			{
+				startIndex = htmlDoc.indexOf('steampowered.com/bundle/');
+				if(startIndex >= 0)
+				{
+					startIndex = startIndex + 24;
+					item.steamType = "bundle";
+				}
+				else
+				{
+					startIndex = htmlDoc.indexOf('steamcommunity.com/bundle/');
+					if(startIndex >= 0)
+					{
+						startIndex = startIndex + 26;
+						item.steamType = "bundle";
+					}
+				}
+			}
+			
 			
 			if(startIndex >= 0)
 			{
@@ -212,7 +257,7 @@ function addSteamIdToGameStorageItem(item, callback)
 
 function getCoverArray(callback, firstTry)
 {
-	chrome.storage.local.get("game", function(result) {
+	browser.storage.local.get("game", function(result) {
 		
 		var gameStorage = result.game;
 		var dataArray = [];
@@ -241,7 +286,7 @@ function getCoverArray(callback, firstTry)
 		}
 
 		var gameStorageItem = gameStorage[gameStorageItemIndex];
-		
+	
 		var request = new XMLHttpRequest();
 		request.open("GET", "http://www.steamgamecovers.com/"+gameStorageItem.path, false);
 		request.send();
