@@ -23,7 +23,12 @@
 		"matches": ["*://store.steampowered.com/app/*"],
 		"exclude_matches": ["*://*/*agecheck*"],
 		"css": ["css/steamgamecovers.css"],
-		"js": ["src/steamgamecoverconnection.js","src/scrollbarcontroller.js","src/steamgamecovers.js"]
+		"js": [
+			"src/steamScrollBarController.js", 
+			"src/steamDOM.js",
+			"src/coversManager.js", 
+			"src/boot.js"
+		]
     }],
   
 	"background": {
@@ -31,6 +36,7 @@
 	},
   
 	"options_ui": {
-		"page": "src/settings/index.html"
+		"page": "src/settings/index.html",
+		"browser_style": true
 	}
 }

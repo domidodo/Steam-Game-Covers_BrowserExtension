@@ -1,0 +1,7 @@
+http://api.steamgamecovers.com/games/v1/?start=0&count=20
+
+http://api.steamgamecovers.com/game/v1/alias=alan-wake
+
+http://api.steamgamecovers.com/soundtracks/v1/?start=0&count=20
+
+http://api.steamgamecovers.com/soundtrack/v1/alias=bully-scholarship-edition
