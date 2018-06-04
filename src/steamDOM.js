@@ -111,6 +111,8 @@ class SteamDOM {
 	
 	static crateHoverContent(coverData)
 	{
+		var languageImage = SteamDOM.createElement('img', {"classes":"cover_language_flag", "src": chrome.runtime.getURL("img/flag_"+coverData.language+".png")});
+		
 		var hoverContent = SteamDOM.createElement('div', {"id":"hover_app_steamgamecover_"+coverData.id, "display": false});
 		
 		var topArea = SteamDOM.createElement('div', {"classes":"hover_top_area", "display": false});
@@ -163,6 +165,7 @@ class SteamDOM {
 		tagsArea.appendChild(tagsAreaBody);
 		
 		
+		hoverContent.appendChild(languageImage);
 		hoverContent.appendChild(topArea);
 		hoverContent.appendChild(title);
 		hoverContent.appendChild(release);

@@ -73,3 +73,8 @@ body.v6 .game_area_cover_section a h5 {
 	background-size: cover;
 	background-position: center center;
 }
+
+.cover_language_flag{
+	float: right;
+	height: 30px;
+}
