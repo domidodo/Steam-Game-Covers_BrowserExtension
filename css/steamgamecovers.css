@@ -65,3 +65,11 @@ body.v6 .game_area_cover_section a h5 {
 	display:block;
 	padding-bottom:5px;
 }
+
+.hover_coverimage{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-position: center center;
+}

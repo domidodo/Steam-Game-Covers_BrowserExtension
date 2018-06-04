@@ -121,7 +121,7 @@ class SteamDOM {
 		var release = SteamDOM.createElement('div', {"classes":"hover_release", "innerHTML": "Release: "+new Date(coverData.date_posted).toLocaleString('en-US')});
 		
 		var coverImageArea = SteamDOM.createElement('div', {"classes":"hover_screenshots"});
-		var coverImage = SteamDOM.createElement('div', {"classes":"screenshot", "backgroundImageUrl": coverData.large_image});
+		var coverImage = SteamDOM.createElement('div', {"classes":"hover_coverimage", "backgroundImageUrl": coverData.large_image});
 		coverImageArea.appendChild(coverImage);
 	
 	
