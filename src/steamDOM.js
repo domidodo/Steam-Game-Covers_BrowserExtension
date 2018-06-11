@@ -55,7 +55,7 @@ class SteamDOM {
 			//coverDownloadCount.innerHTML = 'Downloads: '+data.downloads;
 			//cover.appendChild(coverDownloadCount)
 			
-			var coverArtist = SteamDOM.createElement('h5', {"innerHTML": 'Created by: '+coverData.creator.name});
+			var coverArtist = SteamDOM.createElement('h5', {"innerHTML": TextPool.getString("CreatedBy") +': '+coverData.creator.name});
 			
 			
 			cover.appendChild(coverImage);
@@ -119,8 +119,8 @@ class SteamDOM {
 		
 		var title = SteamDOM.createElement('h4', {"innerHTML": coverData.type.substring(0, coverData.type.length-1).replace(/_/g, " ").toUpperCase()});
 		
-		var creator = SteamDOM.createElement('div', {"classes":"hover_release", "innerHTML": "Creared by: "+coverData.creator.name});
-		var release = SteamDOM.createElement('div', {"classes":"hover_release", "innerHTML": "Release: "+new Date(coverData.date_posted).toLocaleString('en-US')});
+		var creator = SteamDOM.createElement('div', {"classes":"hover_release", "innerHTML": TextPool.getString("CreatedBy") + ": "+coverData.creator.name});
+		var release = SteamDOM.createElement('div', {"classes":"hover_release", "innerHTML": TextPool.getString("Release") + ": "+new Date(coverData.date_posted).toLocaleString(TextPool.getLanguageFormCode())});
 		
 		var coverImageArea = SteamDOM.createElement('div', {"classes":"hover_screenshots"});
 		var coverImage = SteamDOM.createElement('div', {"classes":"hover_coverimage", "backgroundImageUrl": coverData.large_image});
@@ -138,7 +138,7 @@ class SteamDOM {
 		var ratingArea = SteamDOM.createElement('div', {"classes":"hover_body"});
 		var ratingAreaBody = SteamDOM.createElement('div', {"classes":"hover_review_summary"});
 		var ratingAreaStars = SteamDOM.createElement('img', {"src": chrome.runtime.getURL("img/"+coverData.rating.value.replace(".", "")+"star.png")});
-		var ratingAreaDownloadsText = SteamDOM.createElement('span', {"innerHTML":" downloads"});
+		var ratingAreaDownloadsText = SteamDOM.createElement('span', {"innerHTML":" "+TextPool.getString("Downloads")});
 		var ratingAreaDownloadsCount = SteamDOM.createElement('span', {"classes": "game_review_summary"+ratingAreaDownloadsCountClass, "innerHTML": "<br/>"+coverData.downloads});
 		var ratingAreaBottom = SteamDOM.createElement('div', {"clear":"left"});
 		ratingAreaBody.appendChild(ratingAreaStars);
@@ -150,7 +150,7 @@ class SteamDOM {
 		var description = null;
 		if(coverData.description != "")
 		{
-			description = SteamDOM.createElement('p', {"innerHTML":"<b>Description:</b><br/>"+coverData.description});
+			description = SteamDOM.createElement('p', {"innerHTML":"<b>"+TextPool.getString("Description")+":</b><br/>"+coverData.description});
 		}
 		
 		var tagsArea = SteamDOM.createElement('div', {"classes":"hover_body"});

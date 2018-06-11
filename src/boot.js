@@ -1,6 +1,8 @@
 class Boot {
 	static start() 
 	{
+		Settings.init();
+		TextPool.init();
 		
 		var elem = document.getElementById("steamgamecover");
 		if(elem !== null)

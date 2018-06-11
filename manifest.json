@@ -24,6 +24,8 @@
 		"exclude_matches": ["*://*/*agecheck*"],
 		"css": ["css/steamgamecovers.css"],
 		"js": [
+			"src/settings.js",
+			"src/textPool.js",
 			"src/steamScrollBarController.js", 
 			"src/steamDOM.js",
 			"src/coversManager.js", 

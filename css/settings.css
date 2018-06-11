@@ -17,6 +17,11 @@ a:active {
     color:  #000000;
 }
 
+button{
+    width: 100px;
+	float: right;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -103,4 +108,149 @@ tbody tr:hover, tbody tr:hover a{
     font-family:Arial Black;
     font-weight:bold;
     color:#1d53e5;
+}
+
+/* onoff-Checkbox*/
+
+.onoff {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  position: relative;
+  cursor: pointer;
+  width: 55px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 14px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.onoff label {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  background: #cd3c3c;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #FFF;
+  -webkit-transition: background 0.3s, text-indent 0.3s;
+  -moz-transition: background 0.3s, text-indent 0.3s;
+  -o-transition: background 0.3s, text-indent 0.3s;
+  transition: background 0.3s, text-indent 0.3s;
+  text-indent: 27px;
+  -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4) inset;
+  -moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4) inset;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4) inset;
+}
+.onoff label:after {
+  content: 'OFF';
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  font-size: 12px;
+  color: #591717;
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.35);
+  z-index: 1;
+}
+.onoff label:before {
+  content: '';
+  width: 15px;
+  height: 24px;
+  border-radius: 3px;
+  background: #FFF;
+  position: absolute;
+  z-index: 2;
+  top: 3px;
+  left: 3px;
+  display: block;
+  -webkit-transition: left 0.3s;
+  -moz-transition: left 0.3s;
+  -o-transition: left 0.3s;
+  transition: left 0.3s;
+  -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+}
+.onoff input:checked + label {
+  background: #378b2c;
+  text-indent: 8px;
+}
+.onoff input:checked + label:after {
+  content: 'ON';
+  color: #091707;
+}
+.onoff input:checked + label:before {
+  left: 37px;
+}
+.onoff input:disabled + label {
+  background: #424242;
+}
+
+/* style label */
+#content input.radio:empty ~ label {
+	position: relative;
+	float: left;
+	cursor: pointer;
+	margin-bottom:10px;
+	color: #888;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+#content input.radio:empty ~ label:before {
+	position: absolute;
+	display: block;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	content: '';
+	width: 40px;
+	background: #D1D3D4;
+	border-radius: 3px 0 0 3px;
+}
+
+/* toggle hover */
+#content input.radio:hover:not(:checked) ~ label:before {
+	content:'\2714';
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #fffc01;
+	color: #000000;
+}
+
+
+/* toggle on */
+#content input.radio:checked ~ label:before {
+	content:'\2714';
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #000000;
+	background-color: #fffc01;
+}
+
+#content input.radio:checked ~ label {
+	color: #000000;
+}
+
+
+.settingTextPos{
+	width:100%;
+	margin-bottom:5px;
+	border-bottom: 1px dotted black;
+}
+
+.settingButtonPos{
+	width:10%;
+	float:right;
 }

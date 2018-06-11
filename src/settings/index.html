@@ -7,8 +7,69 @@
 	</head>
 
   <body onload="start()">
-	<h1>Mapping</h1>
-	<h3>Games</h3>
+	<h1 id="SettingsTitle"></h1>
+	<div class="settingTextPos">
+		<div class="settingButtonPos">
+			<p class="onoff"><input type="checkbox" id="showUploadButton"><label for="showUploadButton"></label></p>
+		</div>
+		<b id="showUploadButtonTitle"></b><br/>
+		<div id="showUploadButtonText"></div>
+	</div>
+	<div class="settingTextPos">
+		<div class="settingButtonPos">
+			<p class="onoff"><input type="checkbox" id="showBundleCovers"><label for="showBundleCovers"></label></p>
+		</div>
+		<b id="showBundleCoversTitle"></b><br/>
+		<div id="showBundleCoversText"></div>
+	</div>
+	<div class="settingTextPos">
+		<div class="settingButtonPos">
+			<p class="onoff"><input type="checkbox" id="showEnglishCovers"><label for="showEnglishCovers"></label></p>
+		</div>
+		<b id="showEnglishCoversTitle"></b><br/>
+		<div id="showEnglishCoversText"></div>
+	</div>
+	<div class="settingTextPos">
+		<div class="settingButtonPos">
+			<p class="onoff"><input type="checkbox" id="showSpanishCovers"><label for="showSpanishCovers"></label></p>
+		</div>
+		<b id="showSpanishCoversTitle"></b><br/>
+		<div id="showSpanishCoversText"></div>
+	</div>
+	<div class="settingTextPos">
+		<div class="settingButtonPos">
+			<p class="onoff"><input type="checkbox" id="showGermanCovers"><label for="showGermanCovers"></label></p>
+		</div>
+		<b id="showGermanCoversTitle"></b><br/>
+		<div id="showGermanCoversText"></div>
+	</div>
+	<div class="settingTextPos">
+		<div class="settingButtonPos">
+			<p class="onoff"><input type="checkbox" id="showFrenchCovers"><label for="showFrenchCovers"></label></p>
+		</div>
+		<b id="showFrenchCoversTitle"></b><br/>
+		<div id="showFrenchCoversText"></div>
+	</div>
+	<div class="settingTextPos">
+		<div class="settingButtonPos">
+			<p class="onoff"><input type="checkbox" id="showItalianCovers"><label for="showItalianCovers"></label></p>
+		</div>
+		<b id="showItalianCoversTitle"></b><br/>
+		<div id="showItalianCoversText"></div>
+	</div>
+	<div class="settingTextPos">
+		<div class="settingButtonPos">
+			<p class="onoff"><input type="checkbox" id="translateDescription"><label for="translateDescription"></label></p>
+		</div>
+		<b id="translateDescriptionTitle"></b><br/>
+		<div id="translateDescriptionText"></div>
+	</div>		
+	<br/>
+	<br/>
+	<hr>
+	<br/>
+	<h1 id="databaseTitle"></h1>
+	<h3 id="gamesTitle"></h3>
     <table id="GamesTable">
 		<thead>
 			<tr>
@@ -31,7 +92,7 @@
 	</small>
 	<br/>
 	<br/>
-	<h3>Bundle</h3>
+	<h3 id="bundleTitle"></h3>
     <table id="PackageTable">
 		<thead>
 			<tr>
@@ -59,10 +120,9 @@
 	<br/>
 	<br/>
 	<br/>
-	<small>
-		(Firefox will clear data stored where users clear their browsing history and data for privacy reasons.)
-	</small>
+	<small id="BrowserCleanMessage"></small>
 
+    <script type="text/javascript" src="../textPool.js"></script>
     <script type="text/javascript" src="settings.js"></script>
 
   </body>

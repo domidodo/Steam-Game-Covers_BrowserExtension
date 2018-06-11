@@ -22,15 +22,18 @@ class CoversManager {
 				}
 			}
 			
-			list = coversStore.bundles;
-			for(var i = 0; i < list.length; i++)
+			if(Settings.get("showBundleCovers", true))
 			{
-				var items = list[i].bundlItems;
-				for(var j = 0; j < items.length; j++)
+				list = coversStore.bundles;
+				for(var i = 0; i < list.length; i++)
 				{
-					if(items[j] == id)
+					var items = list[i].bundlItems;
+					for(var j = 0; j < items.length; j++)
 					{
-						coverAliase.push(list[i].alias);
+						if(items[j] == id)
+						{
+							coverAliase.push(list[i].alias);
+						}
 					}
 				}
 			}
@@ -66,22 +69,31 @@ class CoversManager {
 					var list = data.single_disc_labels;
 					for(var j = 0; j < list.length; j++)
 					{
-						list[j].type = "single_disc_labels";
-						coverArray.push(list[j]);
+						if(CoversManager.isLanguageActivated(list[j].language))
+						{
+							list[j].type = "single_disc_labels";
+							coverArray.push(list[j]);
+						}
 					}
 					
 					list = data.multi_disc_labels;
 					for(var j = 0; j < list.length; j++)
 					{
-						list[j].type = "multi_disc_labels";
-						coverArray.push(list[j]);
+						if(CoversManager.isLanguageActivated(list[j].language))
+						{
+							list[j].type = "multi_disc_labels";
+							coverArray.push(list[j]);
+						}
 					}
 					
 					list = data.disc_case_covers;
 					for(var j = 0; j < list.length; j++)
 					{
-						list[j].type = "disc_case_covers";
-						coverArray.push(list[j]);
+						if(CoversManager.isLanguageActivated(list[j].language))
+						{
+							list[j].type = "disc_case_covers";
+							coverArray.push(list[j]);
+						}
 					}
 				}
 				
@@ -101,6 +113,24 @@ class CoversManager {
 		}
 		
 		request.send(null);
+	}
+	
+	static isLanguageActivated(lang)
+	{
+		switch(lang)
+		{
+			case "English":
+				return Settings.get("showEnglishCovers", true);
+			case "Spanish":
+				return Settings.get("showSpanishCovers", true);
+			case "German":
+				return Settings.get("showGermanCovers", true);
+			case "Franch":
+				return Settings.get("showFrenchCovers", true);
+			case "Italian":
+				return Settings.get("showItalianCovers", true);
+		}
+		return true;
 	}
 	
 	static updateGames(coversStore, callback)
