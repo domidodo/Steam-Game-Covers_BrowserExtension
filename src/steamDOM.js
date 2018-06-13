@@ -150,7 +150,25 @@ class SteamDOM {
 		var description = null;
 		if(coverData.description != "")
 		{
+			// Alle Zeilenumbrüche ersetzen mit <br/>
+			coverData.description = coverData.description.replace(/\n/g, "<br/>");
+			coverData.description = coverData.description.replace(/\r/g, "");
+			
 			description = SteamDOM.createElement('p', {"innerHTML":"<b>"+TextPool.getString("Description")+":</b><br/>"+coverData.description});
+			
+			if(Settings.get("translateDescription", true))
+			{
+				var c_tag = {};
+				c_tag.dom = description;
+				c_tag.text = coverData.description;
+				
+				TextPool.translate(coverData.description, null, null, function(translation, tag){
+					if(tag.text != translation)
+					{
+						tag.dom.innerHTML = "<b>"+TextPool.getString("Description")+"</b> <small>("+TextPool.getString("TranslatedByGoogle")+")</small><br/>"+translation;
+					}
+				}, c_tag);
+			}
 		}
 		
 		var tagsArea = SteamDOM.createElement('div', {"classes":"hover_body"});
@@ -178,48 +196,7 @@ class SteamDOM {
 		hoverContent.appendChild(tagsArea);
 		
 		document.getElementById("global_hover_content").appendChild(hoverContent);
-		
-		/*
-		<div id="hover_app_steamgamecover_000" style="display: none;">
-			<div class="hover_top_area" style="display: none;">
-			</div>
-			<h4>Cities: Skylines - Green Cities</h4>
-			<div class="hover_release"> Veröffentlicht: 19. Okt. 2017 </div>
-
-			<div class="hover_screenshots">
-				<div class="screenshot" style="background-image: url( https://steamcdn-a.akamaihd.net/steam/apps/614580/ss_d26eb29586517e5da561cfa30645f1cfbdbf168e.600x338.jpg?t=1516968393  )"></div>
-				<div class="screenshot" style="background-image: url( https://steamcdn-a.akamaihd.net/steam/apps/614580/ss_2b3c844c18eb967c6342eed9253b70852a7c6113.600x338.jpg?t=1516968393  )"></div>
-				<div class="screenshot" style="background-image: url( https://steamcdn-a.akamaihd.net/steam/apps/614580/ss_4b817962e3c8db7597624b8936142b298e6a36cf.600x338.jpg?t=1516968393  )"></div>
-				<div class="screenshot" style="background-image: url( https://steamcdn-a.akamaihd.net/steam/apps/614580/ss_b734834fa0d239e6ca350990c8090745801f93f7.600x338.jpg?t=1516968393  )"></div>
-			</div>
-
-			<div class="hover_body">
-				<div class="hover_review_summary">
-					<div class="title">Gesamte Nutzerreviews:</div>
-					<span class="game_review_summary positive">Größtenteils positiv</span> (206 Reviews)
-				</div>
-				<div style="clear: left;"></div>
-			</div>
-			<div class="hover_body">
-				Nutzer-Tags:
-				<div class="hover_tag_row">
-					<div class="app_tag">Simulation</div>
-					<div class="app_tag">Strategie</div>
-					<div class="app_tag">Aufbaustrategie</div>
-				</div>
-			</div>
-			<div class="rule"></div>
-			<div class="hover_body_block"><span>1 Freund</span> wünscht sich dieses Spiel:</div>
-			<div class="friend_blocks_row hover_friends_blocks">
-				<div class="playerAvatar offline">
-					<img id="friend_avatar_img_46357337" src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/4d/4d4f577ee0e85df4735c8eed24c4577352afa9e7.jpg">
-				</div>
-				<div style="clear: left;"></div>
-			</div>
-		</div>
-		*/
 	}
-	
 	
 	/*
 	data = {

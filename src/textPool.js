@@ -29,6 +29,7 @@ class TextPool {
 				showItalianCoversText : "Cover will be displayed in the Italian language.",
 				translateDescriptionTitle : "Translate description",
 				translateDescriptionText : "Automatically translate the description of the cover into the language used by Steam. (Google translate)",
+				TranslatedByGoogle : "Translated by Google",
 			},
 			de : {
 				CreatedBy : "Erstellt von",
@@ -57,6 +58,7 @@ class TextPool {
 				showItalianCoversText : "Es werden Cover in der italienischen Sprache angezeigt.",
 				translateDescriptionTitle : "Beschreibung übersetzen",
 				translateDescriptionText : "Übersetze die Beschreibung vom Cover automatisch in die von Steam verwendete Sprache. (Google translate)",
+				TranslatedByGoogle : "Übersetzt von Google",
 			}
 		}
 	}
@@ -101,5 +103,36 @@ class TextPool {
 				return "de-DE";
 		}
 		return "en-US";
+	}
+	
+	static translate(sourceText, sourceLang, targetLang, callback, tag) {
+		if (sourceText == null){
+			sourceText = "";
+		}
+	  
+		if (sourceLang == null){
+			sourceLang = "auto";
+		}
+	 
+		if (targetLang== null){
+			targetLang = TextPool.getLanguageCode();
+		}
+	  
+		var url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=" + sourceLang + "&tl=" + targetLang + "&dt=t&q=" + encodeURI(sourceText);
+		
+		var request = new XMLHttpRequest();
+		request.open("GET", url, true);
+		request.onreadystatechange = function () {
+			if (request.readyState === 4) {
+				if (request.status === 200) { 
+					var data = JSON.parse(request.responseText);
+					var translation = data[0][0][0];
+					
+					if(callback != null)
+						callback(translation, tag);
+				}
+			}
+		};
+		request.send(null);
 	}
 }

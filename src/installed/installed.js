@@ -40,7 +40,7 @@ browser.runtime.onInstalled.addListener(function (object) {
 		}
 		if(coversSettings.translateDescription == null)
 		{
-			coversSettings.translateDescription = false;
+			coversSettings.translateDescription = true;
 		}
 		
 		browser.storage.local.set({"coversSettings": coversSettings}, null);
