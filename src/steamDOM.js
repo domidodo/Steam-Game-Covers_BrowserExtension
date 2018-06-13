@@ -8,15 +8,25 @@ class SteamDOM {
 			elem.parentNode.removeChild(elem);
 		}
 		
-		var sectionNode = SteamDOM.createElement("div", {"id":"steamgamecover", "classes": "game_area_cover_section","display":true});
-		
-		var panel = SteamDOM.createBody(coverArray);
-		
-		sectionNode.appendChild(SteamDOM.createHeader());
-		sectionNode.appendChild(panel);
-		sectionNode.appendChild(SteamDOM.createScrollBar(panel));
-		
-		document.getElementById("game_area_purchase").appendChild(sectionNode);
+		if(coverArray.length >= 1)
+		{
+			var sectionNode = SteamDOM.createElement("div", {"id":"steamgamecover", "classes": "game_area_cover_section","display":true});
+			
+			var panel = SteamDOM.createBody(coverArray);
+			
+			sectionNode.appendChild(SteamDOM.createHeader());
+			sectionNode.appendChild(panel);
+			sectionNode.appendChild(SteamDOM.createScrollBar(panel));
+			
+			document.getElementById("game_area_purchase").appendChild(sectionNode);
+		}
+		else
+		{
+			if(Settings.get("showUploadButton", false))
+			{
+				alert("showUploadButton");
+			}
+		}
 	}
 	
 	static createHeader()
