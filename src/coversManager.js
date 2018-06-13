@@ -121,7 +121,7 @@ class CoversManager {
 					CoversManager.buildCoverArray(coverAliase, index, coverArray, callback);
 				}
 			}
-		}
+		};
 		
 		request.send(null);
 	}
@@ -149,38 +149,44 @@ class CoversManager {
 		var request = new XMLHttpRequest();
 		request.open("GET", "https://steamgamecovers.com/api/games/v1/", true);
 		request.onreadystatechange = function () {
-			
 			if (request.readyState === 4) {
 				if (request.status === 200) { 
 					var data = JSON.parse(request.responseText).games;
 					var finCounter = coversStore.games.length + coversStore.bundles.length;
 					
-					for(var i = 0; i < data.length; i++)
+					if(finCounter == data.length && callback != null)
 					{
-						if(!CoversManager.isAliasExistInArray(coversStore, data[i].alias))
+						callback();
+					}
+					else
+					{		
+						for(var i = 0; i < data.length; i++)
 						{
-							CoversManager.addSteamData(data[i], function(item){
-								
-								if(item.steamType == "app")
-								{
-									coversStore.games.push(item);
-								}
-								else
-								{
-									coversStore.bundles.push(item);
-								}
-								finCounter++;
-								
-								if(finCounter == data.length && callback != null)
-								{
-									callback();
-								}
-							});
+							if(!CoversManager.isAliasExistInArray(coversStore, data[i].alias))
+							{
+								CoversManager.addSteamData(data[i], function(item){
+									
+									if(item.steamType == "app")
+									{
+										coversStore.games.push(item);
+									}
+									else
+									{
+										coversStore.bundles.push(item);
+									}
+									finCounter++;
+									
+									if(finCounter == data.length && callback != null)
+									{
+										callback();
+									}
+								});
+							}
 						}
 					}
 				}
 			}
-		}
+		};
 		request.send(null);
 	}
 	
@@ -254,7 +260,7 @@ class CoversManager {
 						callback(item);
 					}
 				}
-			}
+			};
 			request.send(null);
 		}
 		else
