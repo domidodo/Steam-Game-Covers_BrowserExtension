@@ -38,16 +38,27 @@ class CoversManager {
 				}
 			}
 			
-			if(coverAliase.length <= 0 && doAutoUpdate)
+			if(coverAliase.length <= 0)
 			{
-				CoversManager.updateGames(coversStore, function(){ 
-					browser.storage.local.set({"coversStore": coversStore}, null);
-					CoversManager.getCoversOfGame(id, false, callback);
-				});
-				return;
+				if(doAutoUpdate)
+				{
+					CoversManager.updateGames(coversStore, function(){ 
+						browser.storage.local.set({"coversStore": coversStore}, null);
+						CoversManager.getCoversOfGame(id, false, callback);
+					});
+				}
+				else
+				{
+					if(callback != null)
+					{
+						callback(new Array());
+					}
+				}
 			}
-			
-			CoversManager.buildCoverArray(coverAliase, null, null, callback);
+			else
+			{
+				CoversManager.buildCoverArray(coverAliase, null, null, callback);
+			}
 		});		
 	}
 	
