@@ -24,7 +24,17 @@ class SteamDOM {
 		{
 			if(Settings.get("showUploadButton", false))
 			{
-				alert("showUploadButton");
+				var sectionNode = SteamDOM.createElement("div", {"id":"steamgamecover", "classes": "game_area_cover_section","display":true});
+			
+				var panel = SteamDOM.createElement("div", {"classes": "uploadButton"});
+				var image = SteamDOM.createElement('img', {"src": chrome.runtime.getURL("img/upload.png"), "center": true});
+				panel.appendChild(image);
+				panel.setAttribute("onclick", "window.open('http://www.steamgamecovers.com/select.php', '_blank').focus();");
+				
+				sectionNode.appendChild(SteamDOM.createHeader());
+				sectionNode.appendChild(panel);
+				
+				document.getElementById("game_area_purchase").appendChild(sectionNode);
 			}
 		}
 	}
@@ -215,6 +225,8 @@ class SteamDOM {
 		"display" - boolean
 		"height" - int
 		"width" - int
+		"fullWidth" - boolean
+		"margin" -int
 		"padding" - int
 		"paddingTop" - int
 		"paddingRight" - int
@@ -222,6 +234,12 @@ class SteamDOM {
 		"paddingLeft" - int
 		"overflowX" - string
 		"overflowY" - string
+		"center" - boolean
+		"borderWidth" - int
+		"borderStyle" - dotted / dashed / solid / double / groove / ridge / inset / outset / none / hidden
+		"borderColor" - string
+		"borderRadius" - int
+		"backgroundColor" - string
 		"backgroundImageUrl" - string
 		"href" - string
 		"src" - string
@@ -252,6 +270,12 @@ class SteamDOM {
 		if(data.width != null)
 			obj.style.width = data.width+"px";
 		
+		if(data.fullWidth != null && data.fullWidth)
+			obj.style.width = "100%";
+		
+		if(data.margin != null)
+			obj.style.margin = data.margin+"px";
+		
 		if(data.padding != null)
 			obj.style.padding = data.padding+"px";
 		
@@ -273,11 +297,36 @@ class SteamDOM {
 		if(data.overflowY != null)
 			obj.style.overflowY = data.overflowY+"px";
 		
+		
+		if(data.center != null && data.center)
+		{
+			obj.style.display = "block";
+			obj.style.marginTop = "auto";
+			obj.style.marginBottom = "auto";
+			obj.style.marginLeft = "auto";
+			obj.style.marginRight = "auto";
+		}
+		
+		if(data.borderWidth != null)
+			obj.style.borderWidth = data.borderWidth+"px";
+		
+		if(data.borderStyle != null)
+			obj.style.borderStyle = data.borderStyle;
+		
+		if(data.borderColor != null)
+			obj.style.borderColor = data.borderColor;
+		
+		if(data.borderRadius != null)
+			obj.style.borderRadius = data.borderRadius+"px";
+		
 		if(data.position != null)
 			obj.style.position = data.position;
 		
 		if(data.clear != null)
 			obj.style.clear = data.clear;
+		
+		if(data.backgroundColor != null)
+			obj.style.backgroundColor = data.backgroundColor;
 		
 		if(data.backgroundImageUrl != null)
 			obj.style.backgroundImage = "url('"+data.backgroundImageUrl+"')";

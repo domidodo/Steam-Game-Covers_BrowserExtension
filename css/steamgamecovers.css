@@ -78,3 +78,18 @@ body.v6 .game_area_cover_section a h5 {
 	float: right;
 	height: 30px;
 }
+
+.uploadButton{
+	cursor: pointer;
+	margin:10px;
+	height: 150px;
+	border-style: dashed;
+	border-radius:20px;
+	border-color:#acb2b8;
+	background-color: #2a475e;
+}
+
+.uploadButton:hover{
+	background-image:linear-gradient(to bottom left, #2a475e, #5aa8d6);
+}
+
