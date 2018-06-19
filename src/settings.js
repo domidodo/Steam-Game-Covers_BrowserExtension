@@ -4,8 +4,8 @@ class Settings {
 	{
 		browser.storage.local.get("coversSettings", function(result) {
 			Settings.coversSettings = result.coversSettings;
-			if(coversSettings != null){
-				var value = coversSettings[key];
+			if(Settings.coversSettings != null){
+				var value = Settings.coversSettings[key];
 				if(value != null)
 					return value;
 			}
