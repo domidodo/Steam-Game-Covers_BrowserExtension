@@ -2,7 +2,7 @@
 
 	"manifest_version": 2,
 	"name": "Steam Game Covers",
-	"version": "2.1",
+	"version": "2.1.1",
 	"author": "Dominik Hitschmann",
 	"description": "Burn your Steam game backups to a CD that's as great as the game itself. For that you need really good covers. This add-on adds a Covers-area to the Steam games page.\nIt include:\n- Disc faces\n- Jewel cases\n- Amary cases\n- BlueRay cases",
 
