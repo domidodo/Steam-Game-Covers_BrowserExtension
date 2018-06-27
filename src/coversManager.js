@@ -162,7 +162,7 @@ class CoversManager {
 					{		
 						for(var i = 0; i < data.length; i++)
 						{
-							if(!CoversManager.isAliasExistInArray(coversStore, data[i].alias))
+							if(!CoversManager.isCoverExistInArray(coversStore, data[i]))
 							{
 								CoversManager.addSteamData(data[i], function(item){
 									
@@ -273,13 +273,27 @@ class CoversManager {
 		
 	}
 	
-	static isAliasExistInArray(array, alian)
+	static isCoverExistInArray(coversStore, cover)
 	{
+		var path = cover.url;
+		var array = coversStore.bundles;
 		for(var i = 0; i < array.length; i++)
 		{
-			if(array[i].alias == alian)
+			if(array[i].url == path)
+			{
 				return true;
+			}
 		}
+		
+		array = coversStore.games;
+		for(var i = 0; i < array.length; i++)
+		{
+			if(array[i].url == path)
+			{
+				return true;
+			}
+		}
+		
 		return false;
 	}
 	
