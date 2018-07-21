@@ -68,16 +68,15 @@ class SteamDOM {
 			
 			var coverImage = SteamDOM.createElement('img', {"classes": "coverimage", "src": coverData.large_image, "height" : 132});
 			
-			
 			var coverRanking = SteamDOM.createElement('img', {"src": chrome.runtime.getURL("img/"+coverData.rating.value.replace(".", "")+"star.png")});
-			
-			//var coverDownloadCount = document.createElement('h4');
-			//coverDownloadCount.innerHTML = 'Downloads: '+data.downloads;
-			//cover.appendChild(coverDownloadCount)
 			
 			var coverArtist = SteamDOM.createElement('h5', {"innerHTML": TextPool.getString("CreatedBy") +': '+coverData.creator.name});
 			
-			
+			if(coverData.metadata.steamType != "app")
+			{
+				var bundleBanner = SteamDOM.createElement('img', {"position":"absolute", "top": 0, "right": 0, "zIndex":100,"height":50, "width":50, "src":chrome.runtime.getURL("img/bundleBanner.png")});
+				cover.appendChild(bundleBanner);
+			}
 			cover.appendChild(coverImage);
 			cover.appendChild(coverRanking);
 			cover.appendChild(coverArtist);
@@ -245,6 +244,11 @@ class SteamDOM {
 		"src" - string
 		"innerHTML" - string
 		"position" - string
+		"zIndex" - int
+		"top" - int
+		"left" - int
+		"right" - int
+		"bottom " - int
 		"clear" - string
 	}
 	*/
@@ -322,6 +326,21 @@ class SteamDOM {
 		if(data.position != null)
 			obj.style.position = data.position;
 		
+		if(data.zIndex != null)
+			obj.style.zIndex  = data.zIndex;
+		
+		if(data.top != null)
+			obj.style.top  = data.top+"px";
+		
+		if(data.left != null)
+			obj.style.left  = data.left+"px";
+		
+		if(data.right != null)
+			obj.style.right  = data.right+"px";
+		
+		if(data.bottom != null)
+			obj.style.bottom  = data.bottom+"px";
+		
 		if(data.clear != null)
 			obj.style.clear = data.clear;
 		
@@ -346,7 +365,6 @@ class SteamDOM {
 		
 		if(data.innerHTML != null)
 			obj.innerHTML = data.innerHTML;
-		
 		
 		return obj;
 	}

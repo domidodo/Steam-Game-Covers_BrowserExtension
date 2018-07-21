@@ -12,13 +12,13 @@ class CoversManager {
 				};
 			}
 			
-			var coverAliase = new Array();
+			var coverMetaData = new Array();
 			var list = coversStore.games;
 			for(var i = 0; i < list.length; i++)
 			{
 				if(list[i].steamId == id)
 				{
-					coverAliase.push(list[i].alias);
+					coverMetaData.push(list[i]);
 				}
 			}
 			
@@ -32,13 +32,13 @@ class CoversManager {
 					{
 						if(items[j] == id)
 						{
-							coverAliase.push(list[i].alias);
+							coverMetaData.push(list[i]);
 						}
 					}
 				}
 			}
 			
-			if(coverAliase.length <= 0)
+			if(coverMetaData.length <= 0)
 			{
 				if(doAutoUpdate)
 				{
@@ -57,12 +57,12 @@ class CoversManager {
 			}
 			else
 			{
-				CoversManager.buildCoverArray(coverAliase, null, null, callback);
+				CoversManager.buildCoverArray(coverMetaData, null, null, callback);
 			}
 		});		
 	}
 	
-	static buildCoverArray(coverAliase, index, coverArray, callback)
+	static buildCoverArray(coverMetaData, index, coverArray, callback)
 	{
 		if(index == null)
 			index = 0;
@@ -71,7 +71,7 @@ class CoversManager {
 			coverArray = new Array();
 			
 		var request = new XMLHttpRequest();
-		request.open("GET", "https://steamgamecovers.com/api/game/v1/alias="+coverAliase[index], true);
+		request.open("GET", "https://steamgamecovers.com/api/game/v1/alias="+coverMetaData[index].alias, true);
 		request.onreadystatechange = function () {
 			if (request.readyState === 4) {
 				if (request.status === 200) { 
@@ -83,6 +83,7 @@ class CoversManager {
 						if(CoversManager.isLanguageActivated(list[j].language))
 						{
 							list[j].type = "single_disc_labels";
+							list[j].metadata = coverMetaData[index];
 							coverArray.push(list[j]);
 						}
 					}
@@ -93,6 +94,7 @@ class CoversManager {
 						if(CoversManager.isLanguageActivated(list[j].language))
 						{
 							list[j].type = "multi_disc_labels";
+							list[j].metadata = coverMetaData[index];
 							coverArray.push(list[j]);
 						}
 					}
@@ -103,12 +105,13 @@ class CoversManager {
 						if(CoversManager.isLanguageActivated(list[j].language))
 						{
 							list[j].type = "disc_case_covers";
+							list[j].metadata = coverMetaData[index];
 							coverArray.push(list[j]);
 						}
 					}
 				}
 				
-				if(index >= coverAliase.length-1)
+				if(index >= coverMetaData.length-1)
 				{
 					if(callback != null)
 					{
@@ -118,7 +121,7 @@ class CoversManager {
 				else
 				{
 					index++;
-					CoversManager.buildCoverArray(coverAliase, index, coverArray, callback);
+					CoversManager.buildCoverArray(coverMetaData, index, coverArray, callback);
 				}
 			}
 		};
