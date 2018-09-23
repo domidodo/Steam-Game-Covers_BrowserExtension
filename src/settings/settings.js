@@ -15,29 +15,10 @@ function init()
 			txtList[i].innerHTML = TextPool.getString(key);
 		}
 	}
-	/*
-	document.getElementById("gamesTitle").innerHTML = TextPool.getString("Games");
-	document.getElementById("bundleTitle").innerHTML = TextPool.getString("Bundle");
-	document.getElementById("databaseTitle").innerHTML = TextPool.getString("Database");
-	document.getElementById("BrowserCleanMessage").innerHTML = "("+TextPool.getString("BrowserCleanMessage")+")";
-	document.getElementById("SettingsTitle").innerHTML = TextPool.getString("Settings");
-	document.getElementById("showUploadButtonTitle").innerHTML = TextPool.getString("showUploadButtonTitle");
-	document.getElementById("showUploadButtonText").innerHTML = TextPool.getString("showUploadButtonText");
-	document.getElementById("showBundleCoversTitle").innerHTML = TextPool.getString("showBundleCoversTitle");
-	document.getElementById("showBundleCoversText").innerHTML = TextPool.getString("showBundleCoversText");
-	document.getElementById("showEnglishCoversTitle").innerHTML = TextPool.getString("showEnglishCoversTitle");
-	document.getElementById("showEnglishCoversText").innerHTML = TextPool.getString("showEnglishCoversText");
-	document.getElementById("showSpanishCoversTitle").innerHTML = TextPool.getString("showSpanishCoversTitle");
-	document.getElementById("showSpanishCoversText").innerHTML = TextPool.getString("showSpanishCoversText");
-	document.getElementById("showGermanCoversTitle").innerHTML = TextPool.getString("showGermanCoversTitle");
-	document.getElementById("showGermanCoversText").innerHTML = TextPool.getString("showGermanCoversText");
-	document.getElementById("showFrenchCoversTitle").innerHTML = TextPool.getString("showFrenchCoversTitle");
-	document.getElementById("showFrenchCoversText").innerHTML = TextPool.getString("showFrenchCoversText");
-	document.getElementById("showItalianCoversTitle").innerHTML = TextPool.getString("showItalianCoversTitle");
-	document.getElementById("showItalianCoversText").innerHTML = TextPool.getString("showItalianCoversText");
-	document.getElementById("translateDescriptionTitle").innerHTML = TextPool.getString("translateDescriptionTitle");
-	document.getElementById("translateDescriptionText").innerHTML = TextPool.getString("translateDescriptionText");
-	*/
+	
+	var manifestData = chrome.runtime.getManifest();
+	document.getElementById("AppVersion").innerHTML = manifestData.version;
+	document.getElementById("AppAuthor").innerHTML = manifestData.author;
 	
 	chrome.storage.local.get("coversSettings", function(result) {
 		// Standardwert in der "installed/installed.js" festlegen
