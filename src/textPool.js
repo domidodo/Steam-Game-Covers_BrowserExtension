@@ -15,7 +15,7 @@ class TextPool {
 				Author: "Author",
 				Help: "Help",
 				Website: "Website",
-				ReportError: "ReportError",
+				ReportError: "Report an error",
 				Donation: "Donation",
 				Hits : "Hits",
 				Database : "Database",
