@@ -84,6 +84,7 @@ class CoversManager {
 						{
 							list[j].type = "single_disc_labels";
 							list[j].metadata = coverMetaData[index];
+							list[j] = CoversManager.convergeImgUrlToSsh(list[j]);
 							coverArray.push(list[j]);
 						}
 					}
@@ -95,6 +96,7 @@ class CoversManager {
 						{
 							list[j].type = "multi_disc_labels";
 							list[j].metadata = coverMetaData[index];
+							list[j] = CoversManager.convergeImgUrlToSsh(list[j]);
 							coverArray.push(list[j]);
 						}
 					}
@@ -106,6 +108,7 @@ class CoversManager {
 						{
 							list[j].type = "disc_case_covers";
 							list[j].metadata = coverMetaData[index];
+							list[j] = CoversManager.convergeImgUrlToSsh(list[j]);
 							coverArray.push(list[j]);
 						}
 					}
@@ -127,6 +130,13 @@ class CoversManager {
 		};
 		
 		request.send(null);
+	}
+	
+	static convergeImgUrlToSsh(cover)
+	{
+		cover.large_image = cover.large_image.replace("http://", "https://"); 
+		cover.thumbnail = cover.thumbnail.replace("http://", "https://"); 
+		return cover;
 	}
 	
 	static isLanguageActivated(lang)
