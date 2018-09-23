@@ -3,128 +3,134 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<link rel="icon" href="../../img/icon.png" type="image/x-icon">
+		<link rel="shortcut icon" href="../../img/icon.png" type="image/x-icon">
+		<title>Steam Game Covers - Settings</title>
 		<link rel="stylesheet" type="text/css" href="../../css/settings.css" media="all">
 	</head>
-
-  <body onload="start()">
-	<h1 id="SettingsTitle"></h1>
-	<div class="settingTextPos">
-		<div class="settingButtonPos">
-			<p class="onoff"><input type="checkbox" id="showUploadButton"><label for="showUploadButton"></label></p>
+	<body>
+		<div id="head">
+			<div class="position">
+				<img src="../../img/logo.png" id="logo" alt="">
+				<div class="rightBox">
+					<h2>STEAM GEME COVERS</h2>
+				</div>
+			</div>
 		</div>
-		<b id="showUploadButtonTitle"></b><br/>
-		<div id="showUploadButtonText"></div>
-	</div>
-	<div class="settingTextPos">
-		<div class="settingButtonPos">
-			<p class="onoff"><input type="checkbox" id="showBundleCovers"><label for="showBundleCovers"></label></p>
+		<div class="position">
+			<div class="contentBox">
+				<h1 class="TextPool" txtKey="Settings">Einstellungen</h1>
+				<div class="content">
+					<label class="container">
+						<input type="checkbox" checked="checked" id="showUploadButton">
+						<span class="checkmark"></span>
+						<b class="TextPool" txtKey="showUploadButtonTitle"></b>
+						<div class="TextPool" txtKey="showUploadButtonText"></div>
+					</label>
+					<hr>
+					<label class="container">
+						<input type="checkbox" checked="checked" id="showBundleCovers">
+						<span class="checkmark"></span>
+						<b class="TextPool" txtKey="showBundleCoversTitle"></b>
+						<div class="TextPool" txtKey="showBundleCoversText"></div>
+					</label>
+					<hr>
+					<label class="container">
+						<input type="checkbox" checked="checked" id="showEnglishCovers">
+						<span class="checkmark"></span>
+						<b class="TextPool" txtKey="showEnglishCoversTitle"></b>
+						<div class="TextPool" txtKey="showEnglishCoversText"></div>
+					</label>
+					<hr>
+					<label class="container">
+						<input type="checkbox" checked="checked" id="showSpanishCovers">
+						<span class="checkmark"></span>
+						<b class="TextPool" txtKey="showSpanishCoversTitle"></b>
+						<div class="TextPool" txtKey="showSpanishCoversText"></div>
+					</label>
+					<hr>
+					<label class="container">
+						<input type="checkbox" checked="checked" id="showGermanCovers">
+						<span class="checkmark"></span>
+						<b class="TextPool" txtKey="showGermanCoversTitle"></b>
+						<div class="TextPool" txtKey="showGermanCoversText"></div>
+					</label>
+					<hr>
+					<label class="container">
+						<input type="checkbox" checked="checked" id="showFrenchCovers">
+						<span class="checkmark"></span>
+						<b class="TextPool" txtKey="showFrenchCoversTitle"></b>
+						<div class="TextPool" txtKey="showFrenchCoversText"></div>
+					</label>
+					<hr>
+					<label class="container">
+						<input type="checkbox" checked="checked" id="showItalianCovers">
+						<span class="checkmark"></span>
+						<b class="TextPool" txtKey="showItalianCoversTitle"></b>
+						<div class="TextPool" txtKey="showItalianCoversText"></div>
+					</label>
+					<hr>
+					<label class="container">
+						<input type="checkbox" checked="checked" id="translateDescription">
+						<span class="checkmark"></span>
+						<b class="TextPool" txtKey="translateDescriptionTitle"></b>
+						<div class="TextPool" txtKey="translateDescriptionText"></div>
+					</label>
+				</div>
+			</div>
+			<div class="contentBox">
+				<h1 class="TextPool" txtKey="Database">Datenbank</h1>
+				<div class="content">
+					<b class="TextPool" txtKey="Games"></b> (<label id="GamesTableHits"></label>)<br/>
+					<br/>
+					<table id="GamesTable">
+						<thead>
+							<tr>
+								<th>
+									Steam Id
+								</th>
+								<th>
+									Name
+								</th>
+								<th>
+									Path (SGC)
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table><br/>
+					<br/>
+					<br/>
+					<hr>
+					<br/>
+					<br/>
+					<b class="TextPool" txtKey="Bundle"></b> (<label id="PackageTableHits"></label>)<br/>
+					<br/>
+					<table id="PackageTable">
+						<thead>
+							<tr>
+								<th>
+									Steam Id
+								</th>
+								<th>
+									Items
+								</th>
+								<th>
+									Name
+								</th>
+								<th>
+									Path (SGC)
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+			</div>
 		</div>
-		<b id="showBundleCoversTitle"></b><br/>
-		<div id="showBundleCoversText"></div>
-	</div>
-	<div class="settingTextPos">
-		<div class="settingButtonPos">
-			<p class="onoff"><input type="checkbox" id="showEnglishCovers"><label for="showEnglishCovers"></label></p>
-		</div>
-		<b id="showEnglishCoversTitle"></b><br/>
-		<div id="showEnglishCoversText"></div>
-	</div>
-	<div class="settingTextPos">
-		<div class="settingButtonPos">
-			<p class="onoff"><input type="checkbox" id="showSpanishCovers"><label for="showSpanishCovers"></label></p>
-		</div>
-		<b id="showSpanishCoversTitle"></b><br/>
-		<div id="showSpanishCoversText"></div>
-	</div>
-	<div class="settingTextPos">
-		<div class="settingButtonPos">
-			<p class="onoff"><input type="checkbox" id="showGermanCovers"><label for="showGermanCovers"></label></p>
-		</div>
-		<b id="showGermanCoversTitle"></b><br/>
-		<div id="showGermanCoversText"></div>
-	</div>
-	<div class="settingTextPos">
-		<div class="settingButtonPos">
-			<p class="onoff"><input type="checkbox" id="showFrenchCovers"><label for="showFrenchCovers"></label></p>
-		</div>
-		<b id="showFrenchCoversTitle"></b><br/>
-		<div id="showFrenchCoversText"></div>
-	</div>
-	<div class="settingTextPos">
-		<div class="settingButtonPos">
-			<p class="onoff"><input type="checkbox" id="showItalianCovers"><label for="showItalianCovers"></label></p>
-		</div>
-		<b id="showItalianCoversTitle"></b><br/>
-		<div id="showItalianCoversText"></div>
-	</div>
-	<div class="settingTextPos">
-		<div class="settingButtonPos">
-			<p class="onoff"><input type="checkbox" id="translateDescription"><label for="translateDescription"></label></p>
-		</div>
-		<b id="translateDescriptionTitle"></b><br/>
-		<div id="translateDescriptionText"></div>
-	</div>		
-	<br/>
-	<br/>
-	<hr>
-	<br/>
-	<h1 id="databaseTitle"></h1>
-	<h3 id="gamesTitle"></h3>
-    <table id="GamesTable">
-		<thead>
-			<tr>
-				<th>
-					Steam Id
-				</th>
-				<th>
-					Name
-				</th>
-				<th>
-					Path (SGC)
-				</th>
-			</tr>
-		</thead>
-		<tbody>
-		</tbody>
-    </table><br/>
-	<small>
-		<div id="GamesTableHits"></div>
-	</small>
-	<br/>
-	<br/>
-	<h3 id="bundleTitle"></h3>
-    <table id="PackageTable">
-		<thead>
-			<tr>
-				<th>
-					Steam Id
-				</th>
-				<th>
-					Items
-				</th>
-				<th>
-					Name
-				</th>
-				<th>
-					Path (SGC)
-				</th>
-			</tr>
-		</thead>
-		<tbody>
-		</tbody>
-    </table><br/>
-	<small>
-		<div id="PackageTableHits"></div>
-	</small>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<small id="BrowserCleanMessage"></small>
-
-    <script type="text/javascript" src="../textPool.js"></script>
-    <script type="text/javascript" src="settings.js"></script>
-
-  </body>
-
+		<script type="text/javascript" src="../textPool.js"></script>
+		<script type="text/javascript" src="settings.js"></script>
+	</body>
 </html>

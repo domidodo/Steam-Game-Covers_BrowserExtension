@@ -8,7 +8,14 @@ function init()
 		});
 	}
 	
-	
+	var txtList = document.getElementsByClassName("TextPool");
+	for(var i = 0; i < txtList.length; i++) {
+		var key = txtList[i].getAttribute("txtKey");
+		if(key != null){
+			txtList[i].innerHTML = TextPool.getString(key);
+		}
+	}
+	/*
 	document.getElementById("gamesTitle").innerHTML = TextPool.getString("Games");
 	document.getElementById("bundleTitle").innerHTML = TextPool.getString("Bundle");
 	document.getElementById("databaseTitle").innerHTML = TextPool.getString("Database");
@@ -30,7 +37,7 @@ function init()
 	document.getElementById("showItalianCoversText").innerHTML = TextPool.getString("showItalianCoversText");
 	document.getElementById("translateDescriptionTitle").innerHTML = TextPool.getString("translateDescriptionTitle");
 	document.getElementById("translateDescriptionText").innerHTML = TextPool.getString("translateDescriptionText");
-	
+	*/
 	
 	chrome.storage.local.get("coversSettings", function(result) {
 		// Standardwert in der "installed/installed.js" festlegen
@@ -74,15 +81,14 @@ function init()
 
 function start()
 {
-	var GamesTableHits = document.getElementById("GamesTableHits");
-	var PackageTableHits = document.getElementById("PackageTableHits");
-	
 	chrome.storage.local.get("coversStore", function(result) {
 		var coversStore = result.coversStore;
 		
+		if(coversStore == null)
+			return;
+		
 		var games = coversStore.games;
 		var bundles = coversStore.bundles;
-		
 		games.sort(function(a,b) {return (a.name.toUpperCase() > b.name.toUpperCase()) ? 1 : ((b.name.toUpperCase() > a.name.toUpperCase()) ? -1 : 0);} );
 		bundles.sort(function(a,b) {return (a.name.toUpperCase() > b.name.toUpperCase()) ? 1 : ((b.name.toUpperCase() > a.name.toUpperCase()) ? -1 : 0);} );
 		
@@ -106,7 +112,7 @@ function start()
 			
 			gameTable.appendChild(row);
 		}
-		GamesTableHits.innerHTML = games.length + " "+TextPool.getString("Hits");
+		document.getElementById("GamesTableHits").innerHTML = games.length + " "+TextPool.getString("Hits");
 		
 		var packageTable = document.getElementById("PackageTable").childNodes[3];
 		for(var i = 0; i < bundles.length; i++)
@@ -143,7 +149,7 @@ function start()
 			
 			packageTable.appendChild(row);
 		}
-		PackageTableHits.innerHTML = bundles.length + " "+TextPool.getString("Hits");
+		document.getElementById("PackageTableHits").innerHTML = bundles.length + " "+TextPool.getString("Hits");
     });
 }
 

@@ -1,256 +1,166 @@
-a:link {
-    color: #000000;
-}
-
-/* visited link */
-a:visited {
-    color: #000000;
-}
-
-/* mouse over link */
-a:hover {
-    color:  #FFFFFF;
-}
-
-/* selected link */
-a:active {
-    color:  #000000;
-}
-
-button{
-    width: 100px;
-	float: right;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
-    border: 2px solid black;
-}
-
-thead, tbody, tr, td, th { box-sizing: border-box;display: block;  overflow: hidden;}
-
-tr:after {
-    content: ' ';
-    display: block;
-    visibility: hidden;
-    clear: both;
-}
-
-thead th { 
-    height: 30px;
-    line-height: 30px;
-    text-align: left;
-}
-
-/*any os other than mac*/
-tbody {
-  height: 300px;
-  overflow-y: auto;
-  width: 100%;
-}
-
-/*any os other than mac*/
-thead {
-  width: 100%;
-  padding-right: 17px;
-  color:#D5DDE5;
-  background:#1b1e24;
-  border-bottom:4px solid #9ea7af;
-  border-right: 1px solid #343a45;
-  font-weight: 100;
-  font-size:15px;
-  padding:5px;
-  text-align:left;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-  vertical-align:middle;
-}
-/*if mac os*/
-body.MacOS thead {
-  padding-right: 0;
-}
-
-tbody { border-top: 2px solid black; }
-
-#GamesTable tbody td, #GamesTable thead th {
-    width: 33%;
-    float: left;
-}
-
-#PackageTable tbody td, #PackageTable thead th {
-    width: 25%;
-    float: left;
-}
-
-.table--class td{
-   background:#FFFFFF;
-  padding-right:15px;
-  vertical-align:middle;
-  font-weight:300;
-  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
-  border-right: 1px solid #C1C3D1;
-  width: 40px;
-}
-
-tbody tr:hover, tbody tr:hover a{
-  background:#4E5066;
-  color:#FFFFFF;
-  border-top: 1px solid #22262e;
-}
-
-.table--class tr:first-child th{
-    
-    border:0px solid #4c7299;
-    text-align:center;
-    border-width:0px 0px 1px 1px;
-    font-size:18px;
-    font-family:Arial Black;
-    font-weight:bold;
-    color:#1d53e5;
-}
-
-/* onoff-Checkbox*/
-
-.onoff {
-  display: -moz-inline-stack;
-  display: inline-block;
-  vertical-align: middle;
-  *vertical-align: auto;
-  zoom: 1;
-  *display: inline;
-  position: relative;
-  cursor: pointer;
-  width: 55px;
-  height: 30px;
-  line-height: 30px;
-  font-size: 14px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-.onoff label {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
+html {
   height: 100%;
-  cursor: pointer;
-  background: #cd3c3c;
-  border-radius: 5px;
-  font-weight: bold;
-  color: #FFF;
-  -webkit-transition: background 0.3s, text-indent 0.3s;
-  -moz-transition: background 0.3s, text-indent 0.3s;
-  -o-transition: background 0.3s, text-indent 0.3s;
-  transition: background 0.3s, text-indent 0.3s;
-  text-indent: 27px;
-  -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4) inset;
-  -moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4) inset;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4) inset;
-}
-.onoff label:after {
-  content: 'OFF';
-  display: block;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  font-size: 12px;
-  color: #591717;
-  text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.35);
-  z-index: 1;
-}
-.onoff label:before {
-  content: '';
-  width: 15px;
-  height: 24px;
-  border-radius: 3px;
-  background: #FFF;
-  position: absolute;
-  z-index: 2;
-  top: 3px;
-  left: 3px;
-  display: block;
-  -webkit-transition: left 0.3s;
-  -moz-transition: left 0.3s;
-  -o-transition: left 0.3s;
-  transition: left 0.3s;
-  -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
-  -moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
-}
-.onoff input:checked + label {
-  background: #378b2c;
-  text-indent: 8px;
-}
-.onoff input:checked + label:after {
-  content: 'ON';
-  color: #091707;
-}
-.onoff input:checked + label:before {
-  left: 37px;
-}
-.onoff input:disabled + label {
-  background: #424242;
+  box-sizing: border-box;
 }
 
-/* style label */
-#content input.radio:empty ~ label {
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body{
+	background: url("https://steamstore-a.akamaihd.net/public/images/v6/colored_body_top2.png?v=2");
+	background-repeat:no-repeat;
+	background-color:#1b2838;
+	color:#FFFFFF;
+	font-family:"Motiva Sans", Sans-serif;
+	font-size:14px;
+	overflow-y:scroll; 
 	position: relative;
-	float: left;
-	cursor: pointer;
-	margin-bottom:10px;
-	color: #888;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
+	margin: 0;
+	padding-bottom: 100px;
+	min-height: 100%;
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	min-width:320px;
 }
 
-#content input.radio:empty ~ label:before {
-	position: absolute;
-	display: block;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	content: '';
-	width: 40px;
-	background: #D1D3D4;
-	border-radius: 3px 0 0 3px;
+a {
+    text-decoration: none;
+    color: #ffffff;
 }
 
-/* toggle hover */
-#content input.radio:hover:not(:checked) ~ label:before {
-	content:'\2714';
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: #fffc01;
-	color: #000000;
+a:hover {
+	text-decoration: none;
+    color: #66c0f4;
+}
+
+a.nohover:hover {
+	text-decoration: none;
 }
 
 
-/* toggle on */
-#content input.radio:checked ~ label:before {
-	content:'\2714';
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	color: #000000;
-	background-color: #fffc01;
+
+h1{
+	font-size: 24px;
+	font-family: "Motiva Sans", Sans-serif;
+	font-weight: 300;
+	font-weight: normal;
+	color: #fff;
 }
 
-#content input.radio:checked ~ label {
-	color: #000000;
-}
-
-
-.settingTextPos{
+#head{
 	width:100%;
-	margin-bottom:5px;
-	border-bottom: 1px dotted black;
+	height:100px;
+	background-color:#171a21;
 }
 
-.settingButtonPos{
-	width:10%;
+
+#head #logo{
+	height:80px;
+}
+
+#head h1{
+	
+}
+
+.position{
+	margin:0px auto;
+	padding:10px;
+	width:900px;
+}
+
+.content{
+	margin:0px auto;
+	padding:10px;
+}
+
+.contentBox{
+	background-color:rgba(0,0,0,0.2);
+	margin:0px auto;
+	width:800px;
+	margin-top:50px;
+	padding-bottom:20px;
+}
+
+.contentBox h1{
+	background-color:#0197cf;
+	font-family: "Motiva Sans", Sans-serif;
+	font-weight: 300;
+	font-size: 17px;
+	line-height: 31px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	padding-left:5px;
+}
+
+.rightBox{
 	float:right;
+}
+
+
+
+/* Customize the label (the container) */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
