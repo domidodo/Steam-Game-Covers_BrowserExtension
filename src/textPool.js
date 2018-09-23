@@ -105,7 +105,7 @@ class TextPool {
 			TextPool.lang = document.documentElement.lang;
 			if(TextPool.lang == null || TextPool.lang == "")
 			{
-				TextPool.lang = window.navigator.language;
+				TextPool.lang = window.navigator.language.substring(0, 2);
 			}
 		}
 		return TextPool.lang;
