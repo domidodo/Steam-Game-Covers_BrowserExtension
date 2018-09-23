@@ -32,7 +32,7 @@ function init()
 	document.getElementById("translateDescriptionText").innerHTML = TextPool.getString("translateDescriptionText");
 	
 	
-	browser.storage.local.get("coversSettings", function(result) {
+	chrome.storage.local.get("coversSettings", function(result) {
 		// Standardwert in der "installed/installed.js" festlegen
 		
 		var coversSettings = result.coversSettings;
@@ -77,7 +77,7 @@ function start()
 	var GamesTableHits = document.getElementById("GamesTableHits");
 	var PackageTableHits = document.getElementById("PackageTableHits");
 	
-	browser.storage.local.get("coversStore", function(result) {
+	chrome.storage.local.get("coversStore", function(result) {
 		var coversStore = result.coversStore;
 		
 		var games = coversStore.games;
@@ -149,13 +149,13 @@ function start()
 
 function changeSetting(key, value)
 {
-	browser.storage.local.get("coversSettings", function(result) {
+	chrome.storage.local.get("coversSettings", function(result) {
 		var coversSettings = result.coversSettings;
 		if(coversSettings == null){
 			coversSettings = {};
 		}
 		coversSettings[key] = value;
-		browser.storage.local.set({"coversSettings": coversSettings}, null);
+		chrome.storage.local.set({"coversSettings": coversSettings}, null);
 	});
 }
 

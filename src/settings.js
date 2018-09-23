@@ -2,20 +2,17 @@ class Settings {
 	
 	static init()
 	{
-		browser.storage.local.get("coversSettings", function(result) {
-			Settings.coversSettings = result.coversSettings;
-			if(Settings.coversSettings != null){
-				var value = Settings.coversSettings[key];
-				if(value != null)
-					return value;
-			}
+		Settings.AppSettings = {};
+		chrome.storage.local.get("coversSettings", function(result) {
+			Settings.AppSettings.coversSettings = result.coversSettings;
 		});
+		
 	}
 	
 	static get(key, defaultValue)
 	{
-		if(Settings.coversSettings != null){
-			var value = Settings.coversSettings[key];
+		if(Settings.AppSettings.coversSettings != null){
+			var value = Settings.AppSettings.coversSettings[key];
 			if(value != null)
 				return value;
 		}

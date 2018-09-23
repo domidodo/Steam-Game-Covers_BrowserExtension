@@ -1,13 +1,13 @@
-browser.runtime.onInstalled.addListener(function (object) {
+chrome.runtime.onInstalled.addListener(function (object) {
 	
-	browser.storage.local.get("coversSettings", function(result) {
+	chrome.storage.local.get("coversSettings", function(result) {
 		var coversSettings = result.coversSettings;
 		
 		if(coversSettings == null){
 			coversSettings = {};
 		}
 		
-		browser.storage.local.clear();
+		chrome.storage.local.clear();
 		
 		
 		if(coversSettings.showUploadButton == null)
@@ -43,8 +43,8 @@ browser.runtime.onInstalled.addListener(function (object) {
 			coversSettings.translateDescription = true;
 		}
 		
-		browser.storage.local.set({"coversSettings": coversSettings}, null);
+		chrome.storage.local.set({"coversSettings": coversSettings}, null);
 	});
 	
-    //browser.tabs.create({url: "https://bitbucket.org/domidodo/steam-game-covers-add-on/wiki/Sync"}, null);
+    //chrome.tabs.create({url: "https://bitbucket.org/domidodo/steam-game-covers-add-on/wiki/Sync"}, null);
 });

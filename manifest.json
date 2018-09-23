@@ -10,7 +10,7 @@
 		"48": "img/icon.png"
 	},
   
-	"web_accessible_resources": ["images/*.png", "images/*.jpg"],
+	"web_accessible_resources": ["img/*.png", "img/*.jpg"],
   
 	"permissions": [
 		"storage",

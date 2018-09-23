@@ -1,7 +1,7 @@
 class CoversManager {
 	static getCoversOfGame(id, doAutoUpdate, callback) 
 	{
-		browser.storage.local.get("coversStore", function(result) {
+		chrome.storage.local.get("coversStore", function(result) {
 			var coversStore = result.coversStore;
 			
 			if(coversStore == null)
@@ -43,7 +43,7 @@ class CoversManager {
 				if(doAutoUpdate)
 				{
 					CoversManager.updateGames(coversStore, function(){ 
-						browser.storage.local.set({"coversStore": coversStore}, null);
+						chrome.storage.local.set({"coversStore": coversStore}, null);
 						CoversManager.getCoversOfGame(id, false, callback);
 					});
 				}
