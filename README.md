@@ -87,7 +87,7 @@ It include:
 
 <!-- GETTING STARTED -->
 
-### Installation
+## Installation
 
 FireFox:
 https://addons.mozilla.org/en-US/firefox/addon/steam-game-covers/
