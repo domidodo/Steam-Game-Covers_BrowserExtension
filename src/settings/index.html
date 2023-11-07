@@ -1,149 +1,164 @@
 <!DOCTYPE html>
 
 <html>
-	<head>
-		<meta charset="utf-8">
-		<link rel="icon" href="../../img/icon.png" type="image/x-icon">
-		<link rel="shortcut icon" href="../../img/icon.png" type="image/x-icon">
-		<title>Steam Game Covers - Settings</title>
-		<link rel="stylesheet" type="text/css" href="../../css/settings.css" media="all">
-	</head>
-	<body>
-		<div id="head">
-			<div class="position">
-				<img src="../../img/logo.png" id="logo" alt="">
-				<div class="rightBox">
-					<h2>STEAM GAME COVERS</h2>
-				</div>
-			</div>
-		</div>
+
+<head>
+	<meta charset="utf-8">
+	<link rel="icon" href="../../img/icon.png" type="image/x-icon">
+	<link rel="shortcut icon" href="../../img/icon.png" type="image/x-icon">
+	<title>Steam Game Covers - Settings</title>
+	<link rel="stylesheet" type="text/css" href="../../css/settings.css" media="all">
+</head>
+
+<body>
+	<div id="head">
 		<div class="position">
-			<div class="contentBox">
-				<h1 class="TextPool" txtKey="Information">Information</h1>
-				<div class="content">
-					<b class="TextPool" txtKey="Version"></b>: <label id="AppVersion"></label><br/>
-					<b class="TextPool" txtKey="Author"></b>: <label id="AppAuthor"></label><br/>
-					<br/>
-					<b class="TextPool" txtKey="Help"></b>: <a href="https://bitbucket.org/domidodo/steam-game-covers-add-on/wiki/Home" target="_blank" class="TextPool" txtKey="Here"></a><br/>
-					<b class="TextPool" txtKey="ReportError"></b>: <a href="https://bitbucket.org/domidodo/steam-game-covers-add-on/issues/new" target="_blank" class="TextPool" txtKey="Here"></a><br/>
-					<b class="TextPool" txtKey="Donation"></b>: <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=dhitschmann%40live%2ede&lc=DE&item_name=Steam%20Game%20Covers%20%28Add%2dOn%29&no_note=0&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest" target="_blank" class="TextPool" txtKey="Here"></a><br/>
-					<br/>
-					<b class="TextPool" txtKey="Website"></b>: <a href="http://www.steamgamecovers.com/" target="_blank">steamgamecovers.com</a><br/>
-				</div>
-			</div>
-			<div class="contentBox">
-				<h1 class="TextPool" txtKey="Settings">Einstellungen</h1>
-				<div class="content">
-					<label class="container">
-						<input type="checkbox" checked="checked" id="showUploadButton">
-						<span class="checkmark"></span>
-						<b class="TextPool" txtKey="showUploadButtonTitle"></b>
-						<div class="TextPool" txtKey="showUploadButtonText"></div>
-					</label>
-					<hr>
-					<label class="container">
-						<input type="checkbox" checked="checked" id="showBundleCovers">
-						<span class="checkmark"></span>
-						<b class="TextPool" txtKey="showBundleCoversTitle"></b>
-						<div class="TextPool" txtKey="showBundleCoversText"></div>
-					</label>
-					<hr>
-					<label class="container">
-						<input type="checkbox" checked="checked" id="showEnglishCovers">
-						<span class="checkmark"></span>
-						<b class="TextPool" txtKey="showEnglishCoversTitle"></b>
-						<div class="TextPool" txtKey="showEnglishCoversText"></div>
-					</label>
-					<hr>
-					<label class="container">
-						<input type="checkbox" checked="checked" id="showSpanishCovers">
-						<span class="checkmark"></span>
-						<b class="TextPool" txtKey="showSpanishCoversTitle"></b>
-						<div class="TextPool" txtKey="showSpanishCoversText"></div>
-					</label>
-					<hr>
-					<label class="container">
-						<input type="checkbox" checked="checked" id="showGermanCovers">
-						<span class="checkmark"></span>
-						<b class="TextPool" txtKey="showGermanCoversTitle"></b>
-						<div class="TextPool" txtKey="showGermanCoversText"></div>
-					</label>
-					<hr>
-					<label class="container">
-						<input type="checkbox" checked="checked" id="showFrenchCovers">
-						<span class="checkmark"></span>
-						<b class="TextPool" txtKey="showFrenchCoversTitle"></b>
-						<div class="TextPool" txtKey="showFrenchCoversText"></div>
-					</label>
-					<hr>
-					<label class="container">
-						<input type="checkbox" checked="checked" id="showItalianCovers">
-						<span class="checkmark"></span>
-						<b class="TextPool" txtKey="showItalianCoversTitle"></b>
-						<div class="TextPool" txtKey="showItalianCoversText"></div>
-					</label>
-					<hr>
-					<label class="container">
-						<input type="checkbox" checked="checked" id="translateDescription">
-						<span class="checkmark"></span>
-						<b class="TextPool" txtKey="translateDescriptionTitle"></b>
-						<div class="TextPool" txtKey="translateDescriptionText"></div>
-					</label>
-				</div>
-			</div>
-			<div class="contentBox">
-				<h1 class="TextPool" txtKey="Database">Datenbank</h1>
-				<div class="content">
-					<b class="TextPool" txtKey="Games"></b> (<label id="GamesTableHits"></label>)<br/>
-					<br/>
-					<table id="GamesTable">
-						<thead>
-							<tr>
-								<th>
-									Steam Id
-								</th>
-								<th>
-									Name
-								</th>
-								<th>
-									Path (SGC)
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-						</tbody>
-					</table><br/>
-					<br/>
-					<br/>
-					<hr>
-					<br/>
-					<br/>
-					<b class="TextPool" txtKey="Bundle"></b> (<label id="PackageTableHits"></label>)<br/>
-					<br/>
-					<table id="PackageTable">
-						<thead>
-							<tr>
-								<th>
-									Steam Id
-								</th>
-								<th>
-									Items
-								</th>
-								<th>
-									Name
-								</th>
-								<th>
-									Path (SGC)
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-						</tbody>
-					</table>
-				</div>
+			<img src="../../img/logo.png" id="logo" alt="">
+			<div class="rightBox">
+				<h2>STEAM GAME COVERS</h2>
 			</div>
 		</div>
-		<script type="text/javascript" src="../textPool.js"></script>
-		<script type="text/javascript" src="settings.js"></script>
-	</body>
+	</div>
+	<div class="position">
+		<div class="contentBox">
+			<a href="https://github.com/domidodo/Steam-Game-Covers_BrowserExtension/" target="_blank"
+				id="forkme_banner">
+				<img src="../../img/forkme_right_red.png" alt="">
+			</a>
+
+			<h1 class="TextPool" txtKey="Information">Information</h1>
+			<div class="content">
+				<b class="TextPool" txtKey="Version"></b>: <label id="AppVersion"></label><br />
+				<b class="TextPool" txtKey="Author"></b>: <label id="AppAuthor"></label><br />
+				<br />
+				<b class="TextPool" txtKey="Help"></b>:
+				<a href="https://github.com/domidodo/Steam-Game-Covers_BrowserExtension/wiki" target="_blank"
+					class="TextPool" txtKey="Here"></a><br />
+				<b class="TextPool" txtKey="ReportError"></b>:
+				<a href="https://github.com/domidodo/Steam-Game-Covers_BrowserExtension/issues" target="_blank"
+					class="TextPool" txtKey="Here"></a><br />
+				<b class="TextPool" txtKey="Donation"></b>:
+				<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=dhitschmann%40live%2ede&lc=DE&item_name=Steam%20Game%20Covers%20%28Add%2dOn%29&no_note=0&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest"
+					target="_blank" class="TextPool" txtKey="Here"></a><br />
+				<br />
+				<b class="TextPool" txtKey="Website"></b>: <a href="http://www.steamgamecovers.com/"
+					target="_blank">steamgamecovers.com</a><br />
+			</div>
+		</div>
+		<div class="contentBox">
+			<h1 class="TextPool" txtKey="Settings">Einstellungen</h1>
+			<div class="content">
+				<label class="container">
+					<input type="checkbox" checked="checked" id="showUploadButton">
+					<span class="checkmark"></span>
+					<b class="TextPool" txtKey="showUploadButtonTitle"></b>
+					<div class="TextPool" txtKey="showUploadButtonText"></div>
+				</label>
+				<hr>
+				<label class="container">
+					<input type="checkbox" checked="checked" id="showBundleCovers">
+					<span class="checkmark"></span>
+					<b class="TextPool" txtKey="showBundleCoversTitle"></b>
+					<div class="TextPool" txtKey="showBundleCoversText"></div>
+				</label>
+				<hr>
+				<label class="container">
+					<input type="checkbox" checked="checked" id="showEnglishCovers">
+					<span class="checkmark"></span>
+					<b class="TextPool" txtKey="showEnglishCoversTitle"></b>
+					<div class="TextPool" txtKey="showEnglishCoversText"></div>
+				</label>
+				<hr>
+				<label class="container">
+					<input type="checkbox" checked="checked" id="showSpanishCovers">
+					<span class="checkmark"></span>
+					<b class="TextPool" txtKey="showSpanishCoversTitle"></b>
+					<div class="TextPool" txtKey="showSpanishCoversText"></div>
+				</label>
+				<hr>
+				<label class="container">
+					<input type="checkbox" checked="checked" id="showGermanCovers">
+					<span class="checkmark"></span>
+					<b class="TextPool" txtKey="showGermanCoversTitle"></b>
+					<div class="TextPool" txtKey="showGermanCoversText"></div>
+				</label>
+				<hr>
+				<label class="container">
+					<input type="checkbox" checked="checked" id="showFrenchCovers">
+					<span class="checkmark"></span>
+					<b class="TextPool" txtKey="showFrenchCoversTitle"></b>
+					<div class="TextPool" txtKey="showFrenchCoversText"></div>
+				</label>
+				<hr>
+				<label class="container">
+					<input type="checkbox" checked="checked" id="showItalianCovers">
+					<span class="checkmark"></span>
+					<b class="TextPool" txtKey="showItalianCoversTitle"></b>
+					<div class="TextPool" txtKey="showItalianCoversText"></div>
+				</label>
+				<hr>
+				<label class="container">
+					<input type="checkbox" checked="checked" id="translateDescription">
+					<span class="checkmark"></span>
+					<b class="TextPool" txtKey="translateDescriptionTitle"></b>
+					<div class="TextPool" txtKey="translateDescriptionText"></div>
+				</label>
+			</div>
+		</div>
+		<div class="contentBox">
+			<h1 class="TextPool" txtKey="Database">Datenbank</h1>
+			<div class="content">
+				<b class="TextPool" txtKey="Games"></b> (<label id="GamesTableHits"></label>)<br />
+				<br />
+				<table id="GamesTable">
+					<thead>
+						<tr>
+							<th>
+								Steam Id
+							</th>
+							<th>
+								Name
+							</th>
+							<th>
+								Path (SGC)
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table><br />
+				<br />
+				<br />
+				<hr>
+				<br />
+				<br />
+				<b class="TextPool" txtKey="Bundle"></b> (<label id="PackageTableHits"></label>)<br />
+				<br />
+				<table id="PackageTable">
+					<thead>
+						<tr>
+							<th>
+								Steam Id
+							</th>
+							<th>
+								Items
+							</th>
+							<th>
+								Name
+							</th>
+							<th>
+								Path (SGC)
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="../textPool.js"></script>
+	<script type="text/javascript" src="settings.js"></script>
+</body>
+
 </html>

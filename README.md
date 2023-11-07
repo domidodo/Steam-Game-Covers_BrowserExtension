@@ -1,40 +1,40 @@
 <a name="readme-top"></a>
 
 <div align="center">
-  <a href="https://github.com/domidodo/steam-game-covers-add-ongraphs/contributors">
-    <img src="https://img.shields.io/github/contributors/domidodo/steam-game-covers-add-on.svg?style=for-the-badge">
+  <a href="https://github.com/domidodo/Steam-Game-Covers_BrowserExtension/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/domidodo/Steam-Game-Covers_BrowserExtension.svg?style=for-the-badge">
   </a>
-  <a href="https://github.com/domidodo/steam-game-covers-add-onnetwork/members">
-    <img src="https://img.shields.io/github/forks/domidodo/steam-game-covers-add-on.svg?style=for-the-badge">
+  <a href="https://github.com/domidodo/Steam-Game-Covers_BrowserExtension/network/members">
+    <img src="https://img.shields.io/github/forks/domidodo/Steam-Game-Covers_BrowserExtension.svg?style=for-the-badge">
   </a>
-  <a href="https://github.com/domidodo/steam-game-covers-add-onstargazers">
-    <img src="https://img.shields.io/github/stars/domidodo/steam-game-covers-add-on.svg?style=for-the-badge">
+  <a href="https://github.com/domidodo/Steam-Game-Covers_BrowserExtension/stargazers">
+    <img src="https://img.shields.io/github/stars/domidodo/Steam-Game-Covers_BrowserExtension.svg?style=for-the-badge">
   </a>
-  <a href="https://github.com/domidodo/steam-game-covers-add-onissues">
-    <img src="https://img.shields.io/github/issues/domidodo/steam-game-covers-add-on.svg?style=for-the-badge">
+  <a href="https://github.com/domidodo/Steam-Game-Covers_BrowserExtension/issues">
+    <img src="https://img.shields.io/github/issues/domidodo/Steam-Game-Covers_BrowserExtension.svg?style=for-the-badge">
   </a>
-  <a href="https://github.com/domidodo/steam-game-covers-add-onblob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/domidodo/steam-game-covers-add-on.svg?style=for-the-badge">
+  <a href="https://github.com/domidodo/Steam-Game-Covers_BrowserExtension/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/domidodo/Steam-Game-Covers_BrowserExtension.svg?style=for-the-badge">
   </a>
   
   <!-- PROJECT LOGO -->
   <br />
   <br />
-  <a href="https://github.com/domidodo/steam-game-covers-add-on">
+  <a href="https://github.com/domidodo/Steam-Game-Covers_BrowserExtension">
     <img src="img/logo.png" alt="Logo" width="159" height="100">
   </a>
 
   <h3 align="center">Steam Game Covers (Add-on)</h3>
 
   <p align="center">
-    An Browser-AddOn for Google Crome and Firefox, to integrate the Steam-Covers on the Steam-Page. 
+    An browser extension for Google Chrome and Firefox, to integrate the Steam-Covers on the Steam-Page. 
     <br />
     <a href="https://www.steamgamecovers.com/"><strong>Go to steamgamecovers.com »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/domidodo/steam-game-covers-add-on/issues">Report Bug</a>
+    <a href="https://github.com/domidodo/Steam-Game-Covers_BrowserExtension/issues">Report Bug</a>
     ·
-    <a href="https://github.com/domidodo/steam-game-covers-add-on/issues">Request Feature</a>
+    <a href="https://github.com/domidodo/Steam-Game-Covers_BrowserExtension/issues">Request Feature</a>
   </p>
 </div>
 
