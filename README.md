@@ -21,7 +21,7 @@
   <br />
   <br />
   <a href="https://github.com/domidodo/Steam-Game-Covers_BrowserExtension">
-    <img src="img/logo.png" alt="Logo" width="159" height="100">
+    <img src="extension/img/logo.png" alt="Logo" width="159" height="100">
   </a>
 
   <h3 align="center">Steam Game Covers (browser extension)</h3>
@@ -89,13 +89,11 @@ It include:
 
 ## Installation
 
-FireFox:
-
+FireFox: \\
 https://addons.mozilla.org/en-US/firefox/addon/steam-game-covers/
 
 
-Google Chrome:
-
+Google Chrome: \\
 https://chrome.google.com/webstore/detail/steam-game-covers/llebobhdlimlfpiebmdjmjbkipmcfmap
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
