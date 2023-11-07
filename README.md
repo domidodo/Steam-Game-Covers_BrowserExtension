@@ -80,19 +80,22 @@ It include:
 
 ### Screenshots
 
-<img src="Screenshots/Screenshot highlighting.png" width="45%"></img>
- <img src="Screenshots/Settings_English.PNG" width="45%"></img>
- <img src="Screenshots/Popup.png" width="45%"></img>
- <img src="Screenshots/Bundle.PNG" width="45%"></img>
+<img src="screenshots/Screenshot highlighting.png" width="45%"></img>
+ <img src="screenshots/Settings_English.PNG" width="45%"></img>
+ <img src="screenshots/Popup.png" width="45%"></img>
+ <img src="screenshots/Bundle.PNG" width="45%"></img>
 
 <!-- GETTING STARTED -->
 
 ## Installation
 
 FireFox:
+
 https://addons.mozilla.org/en-US/firefox/addon/steam-game-covers/
 
+
 Google Chrome:
+
 https://chrome.google.com/webstore/detail/steam-game-covers/llebobhdlimlfpiebmdjmjbkipmcfmap
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
