@@ -89,11 +89,11 @@ It include:
 
 ## Installation
 
-FireFox: \\
+FireFox: <br/>
 https://addons.mozilla.org/en-US/firefox/addon/steam-game-covers/
 
 
-Google Chrome: \\
+Google Chrome: <br/>
 https://chrome.google.com/webstore/detail/steam-game-covers/llebobhdlimlfpiebmdjmjbkipmcfmap
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
