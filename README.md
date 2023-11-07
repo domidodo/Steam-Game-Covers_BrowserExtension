@@ -24,7 +24,7 @@
     <img src="img/logo.png" alt="Logo" width="159" height="100">
   </a>
 
-  <h3 align="center">Steam Game Covers (Add-on)</h3>
+  <h3 align="center">Steam Game Covers (browser extension)</h3>
 
   <p align="center">
     An browser extension for Google Chrome and Firefox, to integrate the Steam-Covers on the Steam-Page. 
