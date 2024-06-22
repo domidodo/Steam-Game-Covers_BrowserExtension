@@ -71,7 +71,7 @@ class CoversManager {
 			coverArray = new Array();
 			
 		var request = new XMLHttpRequest();
-		request.open("GET", "https://steamgamecovers.com/api/game/v1/alias="+coverMetaData[index].alias, true);
+		request.open("GET", "https://www.steamgamecovers.com/api/game/v1/alias="+coverMetaData[index].alias, true);
 		request.onreadystatechange = function () {
 			if (request.readyState === 4) {
 				if (request.status === 200) { 
@@ -160,7 +160,7 @@ class CoversManager {
 	static updateGames(coversStore, callback)
 	{
 		var request = new XMLHttpRequest();
-		request.open("GET", "https://steamgamecovers.com/api/games/v1/", true);
+		request.open("GET", "https://www.steamgamecovers.com/api/games/v1/", true);
 		request.onreadystatechange = function () {
 			if (request.readyState === 4) {
 				if (request.status === 200) { 
