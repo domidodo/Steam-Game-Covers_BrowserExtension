@@ -2,7 +2,7 @@
 
 	"manifest_version": 3,
 	"name": "Steam Game Covers",
-	"version": "2.4.1",
+	"version": "2.4.2",
 	"author": "Dominik Hitschmann",
 	"description": "This extension adds a 'Covers'-area to the Steam games page.",
 
@@ -16,8 +16,7 @@
 	}],
 	
 	"permissions": [
-		"storage",
-		"webRequest"
+		"storage"
 	],
 
 	"content_scripts": [
