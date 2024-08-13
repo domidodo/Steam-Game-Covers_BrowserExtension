@@ -15,7 +15,6 @@ This data is **not** shared with third parties or transmitted to external server
 The extension requires the following permissions:
 
 - **Storage**: This permission is used to save the above-mentioned settings in your browser's local storage.
-- **WebRequest**: This permission allows the extension to monitor HTTP requests. This functionality is solely used to enhance the display of covers on the Steam page.
 
 #### 4. Use of Third-Party APIs
 The extension interacts with the following third-party APIs to provide its features:
